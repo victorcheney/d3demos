@@ -1,159 +1,189 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<svg id="svg" width="345" height="335" font-family="sans-serif" font-size="10"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="d3-scale-radial.js"></script>
-<script>
-    var svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height"),
-        innerRadius = 50,
-        outerRadius = Math.min(width, height) * 0.5,
-        g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2.02 + ")");
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        .svg-container {
+            display: flex;
+        }
+        svg {
+            margin: 100px auto;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="svg-container">
+        <svg id="svg" width="645" height="635" font-family="sans-serif" font-size="12"></svg>
+    </div>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="d3-scale-radial.js"></script>
+    <script>
+        var svg = d3.select("svg"),
+            width = +svg.attr("width"),
+            height = +svg.attr("height"),
+            innerRadius = 100,
+            outerRadius = Math.min(width, height) * 0.5,
+            g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2.02 + ")");
         // g.attr('transform', 'rotate(90deg)');
         // g.attr('transform', 'translate(' + width / 5 + ','+ height /2.4+ ')');
-        
 
-    var x = d3.scaleBand()
-        // .range([ 3 * Math.PI / 8 , 5 * Math.PI / 8])
-        .range([0 ,2 * Math.PI])
-        .align(0);
 
-    var y = d3.scaleRadial()
-        // .range([innerRadius, outerRadius]);
-        .range([innerRadius, outerRadius]);
+        var x = d3.scaleBand()
+            // .range([ 3 * Math.PI / 8 , 5 * Math.PI / 8])
+            .range([0, 2 * Math.PI])
+            .align(0);
 
-    var z = d3.scaleOrdinal()
-        .range(["#ffa600"]);
+        var y = d3.scaleRadial()
+            // .range([innerRadius, outerRadius]);
+            .range([innerRadius, outerRadius]);
 
-    d3.csv("data.cvs", function (d, i, columns) {
-        for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
-        d.total = t;
-        return d;
-    }, function (error, data) {
-        if (error) throw error;
+        var z = d3.scaleOrdinal()
+            .range(["#ffa600"]);
 
-        weave(data, function (a, b) {
-            return b[data.columns[6]] - a[data.columns[6]];
-        });
-        x.domain(data.map(function (d) {
-            return d.State;
-        }));
-        y.domain([0, d3.max(data, function (d) {
-            return d.total;
-        })]);
-        z.domain(data.columns.slice(1));
+        d3.csv("data.cvs", function (d, i, columns) {
+            for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+            d.total = t;
+            return d;
+        }, function (error, data) {
+            if (error) throw error;
 
-        g.append("g")
-            .selectAll("g")
-            .data(d3.stack().keys(data.columns.slice(1))(data))
-            .enter().append("g")
-            .attr("fill", function (d) {
-                return z(d.key);
-            })
-            .selectAll("path")
-            .data(function (d) {
-                return d;
-            })
-            .enter().append("path")
-            .attr("d", d3.arc()
-                .innerRadius(function (d) {
-                    return y(d[0]);
-                })
-                .outerRadius(function (d) {
-                    return y(d[1]);
-                })
-                .startAngle(function (d) {
-                    return x(d.data.State);
-                })
-                .endAngle(function (d) {
-                    return x(d.data.State) + x.bandwidth();
-                })
-                .padAngle(0.01)
-                .padRadius(innerRadius));
-
-        var label = g.append("g")
-            .selectAll("g")
-            .data(data)
-            .enter().append("g")
-            .attr("text-anchor", "middle")
-            .attr("transform", function (d) {
-                return "rotate(" + ((x(d.State) + x.bandwidth() / 2) * 180 / Math.PI - 90) + ")translate(" +
-                    innerRadius + ",0)";
+            weave(data, function (a, b) {
+                return b[data.columns[6]] - a[data.columns[6]];
             });
-
-        label.append("line")
-            .attr("x2", -5)
-            .attr("stroke", "#000");
-
-        label.append("text")
-            .attr("transform", function (d) {
-                return (x(d.State) + x.bandwidth() / 2 + Math.PI / 2) % (2 * Math.PI) < Math.PI ?
-                    "rotate(90)translate(0,16)" : "rotate(-90)translate(0,-9)";
-            })
-            // .attr("transform", "translate(10)")
-            .attr("stroke", "#fff")
-            .text(function (d) {
+            x.domain(data.map(function (d) {
                 return d.State;
-            });
+            }));
+            y.domain([0, d3.max(data, function (d) {
+                return d.total;
+            })]);
+            z.domain(data.columns.slice(1));
 
-        var yAxis = g.append("g")
+            g.append("g")
+                .selectAll("g")
+                .data(d3.stack().keys(data.columns.slice(1))(data))
+                .enter().append("g")
+                .attr("fill", function (d) {
+                    return z(d.key);
+                })
+                .selectAll("path")
+                .data(function (d) {
+                    return d;
+                })
+                .enter().append("path")
+                .attr("d", d3.arc()
+                    .innerRadius(function (d) {
+                        return y(d[0]);
+                    })
+                    .outerRadius(function (d) {
+                        return y(d[1]);
+                    })
+                    .startAngle(function (d) {
+                        return x(d.data.State);
+                    })
+                    .endAngle(function (d) {
+                        return x(d.data.State) + x.bandwidth();
+                    })
+                    .padAngle(0.01)
+                    .padRadius(innerRadius));
+
+            var label = g.append("g")
+                .selectAll("g")
+                .data(data)
+                .enter().append("g")
+                .attr("text-anchor", "middle")
+                .attr("transform", function (d) {
+                    return "rotate(" + ((x(d.State) + x.bandwidth() / 2) * 180 / Math.PI - 90) +
+                        ")translate(" +
+                        innerRadius + ",0)";
+                });
+
+            label.append("line")
+                .attr("x2", -5)
+                .attr("stroke", "#000");
+
+            label.append("text")
+                .attr("transform", function (d) {
+                    return (x(d.State) + x.bandwidth() / 2 + Math.PI / 2) % (2 * Math.PI) < Math.PI ?
+                        "rotate(90)translate(0,16)" : "rotate(-90)translate(0,-9)";
+                })
+                // .attr("transform", "translate(10)")
+                .attr("stroke", "#fff")
+                .text(function (d) {
+                    return d.State;
+                });
+
+            var yAxis = g.append("g")
             // .attr("text-anchor", "center");
 
-        var yTick = yAxis
-            .selectAll("g")
-            .data(y.ticks(10).slice(1))
-            .enter().append("g");
+            var yTick = yAxis
+                .selectAll("g")
+                .data(y.ticks(10).slice(1))
+                .enter().append("g");
 
-        yTick.append("circle")
-            .attr("fill", "none")
-            .attr("stroke", "#a8a8a8")
-            .attr("stroke-opacity", 0.5)
-            .attr("r", y);
+            yTick.append("circle")
+                .attr("fill", "none")
+                .attr("stroke", "#a8a8a8")
+                .attr("stroke-opacity", 0.5)
+                .attr("r", y);
 
-        yTick.append("text")
-            .attr("x", -6)
-            .attr("y", function (d) {
-                return -y(d);
-            })
-            .attr("dy", "0.35em")
-            .attr("fill", "#fff")
-            .attr("stroke", "#fff")
-            .attr("stroke-linejoin", "round")
-            // .attr("stroke-width", 3)
-            .text(y.tickFormat(10, "s"));
+            yTick.append("text")
+                .attr("x", -6)
+                .attr("y", function (d) {
+                    return -y(d);
+                })
+                .attr("dy", "0.35em")
+                .attr("fill", "#fff")
+                .attr("stroke", "#fff")
+                .attr("stroke-linejoin", "round")
+                // .attr("stroke-width", 3)
+                .text(y.tickFormat(10, "s"));
 
-        /* yTick.append("text")
-            .attr("x", -6)
-            .attr("y", function (d) {
-                return -y(d);
-            })
-            .attr("dy", "0.35em")
-            .text(y.tickFormat(10, "s")); */
+            /* yTick.append("text")
+                .attr("x", -6)
+                .attr("y", function (d) {
+                    return -y(d);
+                })
+                .attr("dy", "0.35em")
+                .text(y.tickFormat(10, "s")); */
 
-        yAxis.append("text")
-            .attr("x", -6)
-            .attr("y", function (d) {
-                return -y(y.ticks(10).pop());
-            })
-            .attr("dy", "-1em")
+            yAxis.append("text")
+                .attr("x", -6)
+                .attr("y", function (d) {
+                    return -y(y.ticks(10).pop());
+                })
+                .attr("dy", "-1em")
             // .text("Population");
 
-        var legend = g.append("g")
-            .selectAll("g")
-            .data(data.columns.slice(1).reverse())
-            .enter().append("g")
-            .attr("transform", function (d, i) {
-                return "translate(-40," + (i - (data.columns.length - 1) / 2) * 20 + ")";
-            });
+            var legend = g.append("g")
+                .selectAll("g")
+                .data(data.columns.slice(1).reverse())
+                .enter().append("g")
+                .attr("transform", function (d, i) {
+                    return "translate(-40," + (i - (data.columns.length - 1) / 2) * 20 + ")";
+                });
 
-        /* legend.append("rect")
-            .attr("width", 18)
-            .attr("height", 18)
-            .attr("fill", z)
-            .attr("opacity", 0); */
+            /* legend.append("rect")
+                .attr("width", 18)
+                .attr("height", 18)
+                .attr("fill", z)
+                .attr("opacity", 0); */
 
-        /* legend.append("text")
+            /* legend.append("text")
             .attr("x", 24)
             .attr("y", 9)
             .attr("dy", "0.35em")
@@ -161,15 +191,17 @@
                 return d;
             });
  */
-        // svg.attr('transform', 'rotate(-90)');
-    });
+            // svg.attr('transform', 'rotate(-90)');
+        });
 
-    function weave(array, compare) {
-        var i = -1,
-            j, n = array.sort(compare).length,
-            weave = new Array(n);
-        while (++i < n) weave[i] = array[(j = i << 1) >= n ? (n - i << 1) - 1 : j];
-        while (--n >= 0) array[n] = weave[n];
-    }
+        function weave(array, compare) {
+            var i = -1,
+                j, n = array.sort(compare).length,
+                weave = new Array(n);
+            while (++i < n) weave[i] = array[(j = i << 1) >= n ? (n - i << 1) - 1 : j];
+            while (--n >= 0) array[n] = weave[n];
+        }
+    </script>
+</body>
 
-</script>
+</html>
