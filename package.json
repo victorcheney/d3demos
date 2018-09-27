@@ -1,0 +1,15 @@
+{
+  "name": "d3demos",
+  "version": "1.0.0",
+  "description": "d3 demos",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
