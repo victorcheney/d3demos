@@ -38,17 +38,41 @@ header h2 {
 .list-container li {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 10px;
-    height: 180px;
+    padding: 5px;
+    height: 250px;
     width: 15%;
     cursor: pointer;
     border: 1px solid #eee;
     transition: all .3s;
     text-align: center;
     border-radius: 3px;
-    background: #eee;
+    background: rgba(238, 238, 238, 0.2);
 }
 .list-container li:hover {
     margin-top: -3px; 
+}
+
+.list-container li:hover img {
+    filter: none;
+    transform: scale(1.02)
+}
+
+.list-container li img {
+    opacity: .8;
+    -webkit-filter: blur(1px);
+　　-moz-filter: blur(1px);
+　　-ms-filter: blur(1px);
+    filter: blur(1px);
+    transition: all .3s;
+}
+
+.p-link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 80px;
+    border-top: 1px dotted #ddd; 
 }
