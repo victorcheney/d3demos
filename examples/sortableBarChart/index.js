@@ -141,7 +141,8 @@ let initChart = function() {
   .attr('height', height);
 
   const bar = svg.append("g")
-    .attr("fill", "steelblue")
+    // .attr("fill", "steelblue")
+    .attr("fill", "#ddd")
     .selectAll("rect")
     .data(data)
     .enter().append("rect")
@@ -149,7 +150,7 @@ let initChart = function() {
     .attr("x", d => x(d.name))
     .attr("y", d => y(d.value))
     .attr("height", d => y(0) - y(d.value))
-    .attr("width", x.bandwidth());
+    .attr("width",  '10px' /* x.bandwidth() */);
 
   const gx = svg.append("g")
     .call(xAxis);
@@ -157,6 +158,7 @@ let initChart = function() {
   const gy = svg.append("g")
     .call(yAxis);
 
+  // 更新数据
   svg.node().update = () => {
     const t = svg.transition()
       .duration(750);
