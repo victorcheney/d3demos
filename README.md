@@ -10,3 +10,5 @@ d3.js demos
 ### 3、[分层条形图](https://victorcheney.github.io/d3demos/examples/hierarchicalBarChart/index.html)
 
 ### 4、[排序柱状图](https://victorcheney.github.io/d3demos/examples/sortableBarChart/index.html)
+
+### 5、[横向实时图表](https://victorcheney.github.io/d3demos/examples/realtimeHorizonChart/index.html)
