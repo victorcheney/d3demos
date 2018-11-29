@@ -21,7 +21,7 @@ let margin = ({
   bottom: 0,
   left: 10
 });
-let step = 29;
+let step = 25;// 29;
 let color = i => d3[scheme][Math.max(3, overlap)][i + Math.max(0, 3 - overlap)];
 let width = 1000;
 let height = data.length * (step + 1) + margin.top + margin.bottom;
