@@ -37,6 +37,12 @@ ul,li {
   padding: 15px;
 }
 
+.chart-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .menu {
   padding: 10px 0;
 }

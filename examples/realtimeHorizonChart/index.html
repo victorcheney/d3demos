@@ -18,11 +18,11 @@
     <aside class="aside">
       <ul class="menu">
         <li class="menu-item">
-          <a href="../../examples/RadialStackedBar/index.html"><span>Radial Stacked Bar III</span></a>
+          <a href="../../examples/RadialStackedBar/index.html"><span>径向堆积柱状图</span></a>
           <a href="../../examples/RadialStackedBar/index.html"><i class="fa fa-link"></i></a>
         </li>
         <li class="menu-item">
-          <a href="../../examples/riseOfBitcoin/index.html"><span>Rise Of Bitcoin</span></a>
+          <a href="../../examples/riseOfBitcoin/index.html"><span>带可编辑注释的折线图</span></a>
           <a href="https://beta.observablehq.com/@bsurnida/d3-annotation-with-d3-line-chart" title="原文链接"><i class="fa fa-link"></i></a>
         </li>
         <li class="menu-item">
@@ -52,28 +52,30 @@
       </header>
       <section>
         <div class="chart-container">
-          <input id="overlap" type="range" min="1" max="18" value="7" step="1">
+          <div>
+            <input id="overlap" type="range" min="1" max="18" value="7" step="1">
 
-          <select id="scheme" onchange="schemeChange()">
-            <option value="schemeBlues">Blues</option>
-            <option value="schemeGreens" selected>Greens</option>
-            <option value="schemeGreys">Greys</option>
-            <option value="schemeOranges">Oranges</option>
-            <option value="schemePurples">Purples</option>
-            <option value="schemeReds">Reds</option>
-            <option value="schemeBuGn">BuGn</option>
-            <option value="schemeBuPu">BuPu</option>
-            <option value="schemeGnBu">GnBu</option>
-            <option value="schemeOrRd">OrRd</option>
-            <option value="schemePuBu">PuBu</option>
-            <option value="schemePuBuGn">PuBuGn</option>
-            <option value="schemePuRd">PuRd</option>
-            <option value="schemeRdPu">RdPu</option>
-            <option value="schemeYlGn">YlGn</option>
-            <option value="schemeYlGnBu">YlGnBu</option>
-            <option value="schemeYlOrBr">YlOrBr</option>
-            <option value="schemeYlOrRd">YlOrRd</option>
-          </select>
+            <select id="scheme" onchange="schemeChange()">
+              <option value="schemeBlues">Blues</option>
+              <option value="schemeGreens" selected>Greens</option>
+              <option value="schemeGreys">Greys</option>
+              <option value="schemeOranges">Oranges</option>
+              <option value="schemePurples">Purples</option>
+              <option value="schemeReds">Reds</option>
+              <option value="schemeBuGn">BuGn</option>
+              <option value="schemeBuPu">BuPu</option>
+              <option value="schemeGnBu">GnBu</option>
+              <option value="schemeOrRd">OrRd</option>
+              <option value="schemePuBu">PuBu</option>
+              <option value="schemePuBuGn">PuBuGn</option>
+              <option value="schemePuRd">PuRd</option>
+              <option value="schemeRdPu">RdPu</option>
+              <option value="schemeYlGn">YlGn</option>
+              <option value="schemeYlGnBu">YlGnBu</option>
+              <option value="schemeYlOrBr">YlOrBr</option>
+              <option value="schemeYlOrRd">YlOrRd</option>
+            </select>
+          </div>
 
           <div id="chart" style="position:relative;"></div>
         </div>

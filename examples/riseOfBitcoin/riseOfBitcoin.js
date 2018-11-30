@@ -15,7 +15,7 @@ var query = 'start=' + startDate + '&end=' + endDate;
 var parseTime = d3.isoParse;
 var formatTime = d3.isoFormat;
 var height = 600;
-var width = 600;
+var width = 800;
 var margin = {
     top: 20,
     right: 30,

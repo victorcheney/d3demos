@@ -136,7 +136,7 @@ let yAxis = g => g
   // 初始化图表
 let initChart = function() {
   // const svg = d3.select(DOM.svg(width, height));
-  const svg = d3.select("body").append("svg")
+  const svg = d3.select("#chart").append("svg")
   .attr('width', width)
   .attr('height', height);
 
@@ -150,7 +150,7 @@ let initChart = function() {
     .attr("x", d => x(d.name))
     .attr("y", d => y(d.value))
     .attr("height", d => y(0) - y(d.value))
-    .attr("width",  '10px' /* x.bandwidth() */);
+    .attr("width",  x.bandwidth());
 
   const gx = svg.append("g")
     .call(xAxis);
