@@ -63,10 +63,10 @@ header h2 {
 
 .list-container li img {
     opacity: .8;
-    -webkit-filter: blur(1px);
+    /* -webkit-filter: blur(1px);
 　　-moz-filter: blur(1px);
-　　-ms-filter: blur(1px);
-    filter: blur(1px);
+　　-ms-filter: blur(1px); 
+    filter: blur(1px);*/
     transition: all .3s;
 }
 

@@ -63,6 +63,7 @@ ul,li {
   display: inline-block;
   height: 100%;
   width: 100%;
+  transition: all .3s;
 }
 
 .menu-item a:last-child {
@@ -78,6 +79,14 @@ ul,li {
 
 .menu-item:hover {
   background: #ddd;
+}
+
+.menu-item.active {
+  background-color: #333;
+}
+
+.menu-item.active a {
+  color: #fff;
 }
 
 
