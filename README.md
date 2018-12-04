@@ -26,6 +26,6 @@
 
 ![src/img/RadialStackedBar.png](src/img/realtimeHorizonChart.png)
 
-### 7、[横向实时图表](https://victorcheney.github.io/d3demos/examples/stackedToGroupedBars/index.html)
+### 7、[堆状条形图分组条形图切换](https://victorcheney.github.io/d3demos/examples/stackedToGroupedBars/index.html)
 
 ![src/img/RadialStackedBar.png](src/img/stacktogroupbar.png)
