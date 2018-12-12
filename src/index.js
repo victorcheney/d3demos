@@ -53,6 +53,13 @@ let menuData = [{
     url: 'examples/areaChart/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-area-chart',
     img: 'src/img/areaChart.png'
+  },
+  {
+    id: '9',
+    name: '折叠树图',
+    url: 'examples/collapsibleTree/index.html',
+    originUrl: 'https://beta.observablehq.com/@mbostock/collapsible-tree',
+    img: 'src/img/collapsibleTree.png'
   }
 ]
 

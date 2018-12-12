@@ -71,7 +71,6 @@ let xAxis = svg => svg.append("g")
   .attr("transform", `translate(0,${height - margin.bottom})`)
   .call(d3.axisBottom(x).tickSizeOuter(0).tickFormat(() => ""))
 
-
 /**
  * 初始化图表
  */
