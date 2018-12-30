@@ -9403,7 +9403,7 @@ let initchart = () => {
             if (node.x > right.x) right = node;
         });
 
-        const height = right.x - left.x + margin.top + margin.bottom;debugger
+        const height = right.x - left.x + margin.top + margin.bottom;
 
         const transition = svg.transition()
             .duration(duration)

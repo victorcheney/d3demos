@@ -1,4 +1,3 @@
-
 let data = [
   {date: '2007-04-23', value: 93.24},
   {date: '2007-04-24', value: 95.35},
@@ -60,76 +59,41 @@ let data = [
   {date: '2007-07-15', value: 138.1},
   {date: '2007-07-16', value: 138.91},
   {date: '2007-07-17', value: 138.12},
-  {date: '2007-07-18', value: 140},
-  {date: '2007-07-19', value: 143.75},
-  {date: '2007-07-22', value: 143.7},
-  {date: '2007-07-23', value: 134.89},
-  {date: '2007-07-24', value: 137.26},
-  {date: '2007-07-25', value: 146},
-  {date: '2007-07-26', value: 143.85},
-  {date: '2007-07-29', value: 141.43},
-  {date: '2007-07-30', value: 131.76},
-  {date: '2007-08-01', value: 135},
-  {date: '2007-08-02', value: 136.49},
-  {date: '2007-08-03', value: 131.85},
-  {date: '2007-08-06', value: 135.25},
-  {date: '2007-08-07', value: 135.03},
-  {date: '2007-08-08', value: 134.01},
-  {date: '2007-08-09', value: 126.39},
-  {date: '2007-08-09', value: 125},
-  {date: '2007-08-12', value: 127.79},
-  {date: '2007-08-13', value: 124.03},
-  {date: '2007-08-14', value: 119.9},
-  {date: '2007-08-15', value: 117.05},
-  {date: '2007-08-16', value: 122.06},
-  {date: '2007-08-19', value: 122.22},
-  {date: '2007-08-20', value: 127.57},
-  {date: '2007-08-21', value: 132.51},
-  {date: '2007-08-22', value: 131.07},
-  {date: '2007-08-23', value: 135.3},
-  {date: '2007-08-26', value: 132.25},
-  {date: '2007-08-27', value: 126.82},
-  {date: '2007-08-28', value: 134.08},
-  {date: '2007-08-29', value: 136.25},
-  {date: '2007-08-30', value: 138.48},
-  {date: '2007-09-04', value: 144.16},
-  {date: '2007-09-05', value: 136.76},
-  {date: '2007-09-06', value: 135.01},
-  {date: '2007-09-07', value: 131.77},
-  {date: '2007-09-09', value: 136.71},
-  {date: '2007-09-10', value: 135.49},
-  {date: '2007-09-11', value: 136.85},
-  {date: '2007-09-12', value: 137.2}
-]
-
-// data = data.map(d => d.date.replace(/-/g, '/'));
-
-
-let margin = {
-  top: 20,
-  right: 20,
-  bottom: 30,
-  left: 30
-};
+];
 
 let height = 500;
 let width = 900;
 
+let margin = {
+  top: 20,
+  right: 30,
+  bottom: 30,
+  left: 40
+};
+
+// 线性的时间比例尺
 let x = d3.scaleTime()
+  // .domain(d3.extent(data, d => new Date(d.date).getTime()))
   // .domain(d3.extent(data, d => new Date(d.date)))
-  .domain([new Date('2007-04-23'), new Date('2007-09-12'),])
+  .domain([new Date('2007-04-23'), new Date('2007-07-17')])
   .range([margin.left, width - margin.right]);
 
-  // console.log(d3.extent(data,d => new Date(d.date).getTime()))
-
+// 定量的线性比例尺
 let y = d3.scaleLinear()
   .domain([0, d3.max(data, d => d.value)]).nice()
-  .range([height - margin.bottom, margin.top])
+  .range([height - margin.bottom, margin.top]);
 
+// x轴
+// d3.axisBottom 创建一个新的刻度在下的坐标轴生成器
+// ticks() 自定义刻度的显示方式以及格式化刻度
+// tickSizeOuter() 设置外侧(坐标轴两端)刻度大小
 let xAxis = g => g
   .attr('transform', `translate(0, ${height - margin.bottom})`)
-  .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+  .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0).tickFormat(d3.timeFormat('%Y-%m-%d')));
 
+// y轴
+// d3.axisLeft 创建一个新的刻度在左的坐标轴生成器
+// clone() 插入选中元素的克隆
 let yAxis = g => g
   .attr('transform', `translate(${margin.left}, 0)`)
   .call(d3.axisLeft(y))
@@ -138,32 +102,37 @@ let yAxis = g => g
     .attr('x', 3)
     .attr('text-anchor', 'start')
     .attr('font-weight', 'bold')
-    .text(data.y))
+    .text(data.y)
+  );
 
-let area = d3.area()
-  .x(d => new Date(d.date))
-  .y0(y(0))
-  .y1(d => y(d.value))
+// 线条生成器
+// defined() 设置 defined(缺省) 访问器
+// x() 设置线条生成器的 x-访问器.
+// y() 设置线条生成器的 y-访问器.
+let line = d3.line()
+  .defined(d => !isNaN(d.value))
+  .x(d => x(new Date(d.date)))
+  .y(d => y(d.value + ''))
 
-let chart = () => {
+let chart = function() {
   const svg = d3.select('#chart').append('svg')
     .attr('width', width)
     .attr('height', height);
-    console.log(data);
 
-    svg.append('path')
+  svg.append('g')
+    .call(xAxis)
+
+  svg.append('g').call(yAxis);
+
+  svg.append('path')
     .datum(data)
-    .attr('fill', '#000')
-    .attr('d', area);
-
-    svg.append('g')
-      .call(xAxis);
-
-    svg.append('g')
-      .call(yAxis);
-
-    return svg.node();
+    .attr('fill', 'none')
+    .attr('stroke', '#000')
+    .attr('stroke-width', 1.5)
+    .attr('stroke-linejoin', 'round')
+    .attr('stroke-linecap', 'round')
+    .attr('d', line);
 }
 
+// 
 chart();
-

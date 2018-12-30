@@ -60,6 +60,13 @@ let menuData = [{
     url: 'examples/collapsibleTree/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/collapsible-tree',
     img: 'src/img/collapsibleTree.png'
+  },
+  {
+    id: '109',
+    name: '折线图',
+    url: 'examples/linechart/index.html',
+    originUrl: 'https://beta.observablehq.com/@mbostock/d3-line-chart',
+    img: 'src/img/collapsibleTree.png'
   }
 ]
 

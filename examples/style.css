@@ -35,6 +35,8 @@ ul,li {
 
 .chart-container {
   padding: 15px;
+  overflow-y: scroll;
+  height: 600px;
 }
 
 .chart-container > div {
