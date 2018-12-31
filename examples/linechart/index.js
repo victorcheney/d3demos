@@ -74,8 +74,8 @@ let margin = {
 // 线性的时间比例尺
 let x = d3.scaleTime()
   // .domain(d3.extent(data, d => new Date(d.date).getTime()))
-  // .domain(d3.extent(data, d => new Date(d.date)))
-  .domain([new Date('2007-04-23'), new Date('2007-07-17')])
+  .domain(d3.extent(data, d => new Date(d.date)))
+  // .domain([new Date('2007-04-23'), new Date('2007-07-17')])
   .range([margin.left, width - margin.right]);
 
 // 定量的线性比例尺
@@ -114,7 +114,8 @@ let line = d3.line()
   .x(d => x(new Date(d.date)))
   .y(d => y(d.value + ''))
 
-let chart = function() {
+let chart = function(data) {
+
   const svg = d3.select('#chart').append('svg')
     .attr('width', width)
     .attr('height', height);
@@ -135,4 +136,4 @@ let chart = function() {
 }
 
 // 
-chart();
+chart(data);
