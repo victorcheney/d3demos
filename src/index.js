@@ -66,14 +66,14 @@ let menuData = [{
     name: '折线图',
     url: 'examples/linechart/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-line-chart',
-    img: 'src/img/collapsibleTree.png'
+    img: 'src/img/linechart.png'
   },
   {
     id: '11',
     name: '柱状图',
     url: 'examples/barchart/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-bar-chart',
-    img: 'src/img/collapsibleTree.png'
+    img: 'src/img/barchart.png'
   }
 ]
 
