@@ -29,3 +29,19 @@
 ### 7、[堆状条形图分组条形图切换](https://victorcheney.github.io/d3demos/examples/stackedToGroupedBars/index.html)
 
 ![src/img/RadialStackedBar.png](src/img/stacktogroupbar.png)
+
+### 8、[面积图](https://victorcheney.github.io/d3demos/examples/areaChart/index.html)
+
+![src/img/RadialStackedBar.png](src/img/areaChart.png)
+
+### 9、[面积图](https://victorcheney.github.io/d3demos/examples/areaChart/index.html)
+
+![src/img/RadialStackedBar.png](src/img/areaChart.png)
+
+### 10、[折线图](https://victorcheney.github.io/d3demos/examples/linechart/index.html)
+
+![src/img/RadialStackedBar.png](src/img/linechart.png)
+
+### 11、[柱状图](https://victorcheney.github.io/d3demos/examples/barchart/index.html)
+
+![src/img/RadialStackedBar.png](src/img/barchart.png)
