@@ -34,9 +34,9 @@
 
 ![src/img/RadialStackedBar.png](src/img/areaChart.png)
 
-### 9、[面积图](https://victorcheney.github.io/d3demos/examples/areaChart/index.html)
+### 9、[折叠树状图](https://victorcheney.github.io/d3demos/examples/areaChart/index.html)
 
-![src/img/RadialStackedBar.png](src/img/areaChart.png)
+![src/img/RadialStackedBar.png](src/img/collapsibleTree.png)
 
 ### 10、[折线图](https://victorcheney.github.io/d3demos/examples/linechart/index.html)
 
