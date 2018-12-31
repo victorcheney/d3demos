@@ -62,10 +62,17 @@ let menuData = [{
     img: 'src/img/collapsibleTree.png'
   },
   {
-    id: '109',
+    id: '10',
     name: '折线图',
     url: 'examples/linechart/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-line-chart',
+    img: 'src/img/collapsibleTree.png'
+  },
+  {
+    id: '11',
+    name: '柱状图',
+    url: 'examples/barchart/index.html',
+    originUrl: 'https://beta.observablehq.com/@mbostock/d3-bar-chart',
     img: 'src/img/collapsibleTree.png'
   }
 ]
