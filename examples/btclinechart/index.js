@@ -56,37 +56,37 @@ let chart = function(data) {
 
   // 线性的时间比例尺
   let x = d3.scaleTime()
-  // .domain(d3.extent(data, d => new Date(d.date).getTime()))
-  .domain(d3.extent(data, d => new Date(d.createdDate)))
-  // .domain([new Date('2007-04-23'), new Date('2007-07-17')])
-  .range([margin.left, width - margin.right]);
+    // .domain(d3.extent(data, d => new Date(d.date).getTime()))
+    .domain(d3.extent(data, d => new Date(d.createdDate)))
+    // .domain([new Date('2007-04-23'), new Date('2007-07-17')])
+    .range([margin.left, width - margin.right]);
 
   // 定量的线性比例尺
   let y = d3.scaleLinear()
-  .domain([0, d3.max(data, d => d.high)]).nice()
-  .range([height - margin.bottom, margin.top]);
+    .domain([0, d3.max(data, d => d.high)]).nice()
+    .range([height - margin.bottom, margin.top]);
 
   // x轴
   // d3.axisBottom 创建一个新的刻度在下的坐标轴生成器
   // ticks() 自定义刻度的显示方式以及格式化刻度
   // tickSizeOuter() 设置外侧(坐标轴两端)刻度大小
   let xAxis = g => g
-  .attr('transform', `translate(0, ${height - margin.bottom})`)
-  .call(d3.axisBottom(x).ticks(width / 110).tickSizeOuter(0).tickFormat(d3.timeFormat('%Y/%m/%d')));
+    .attr('transform', `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(width / 110).tickSizeOuter(0).tickFormat(d3.timeFormat('%Y/%m/%d')));
 
   // y轴
   // d3.axisLeft 创建一个新的刻度在左的坐标轴生成器
   // clone() 插入选中元素的克隆
   let yAxis = g => g
-  .attr('transform', `translate(${margin.left}, 0)`)
-  .call(d3.axisLeft(y))
-  .call(g => g.select('.domain').remove())
-  .call(g => g.select('.tick:last-of-type text').clone()
-    .attr('x', 3)
-    .attr('text-anchor', 'start')
-    .attr('font-weight', 'bold')
-    .text(data.y)
-  );
+    .attr('transform', `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(y))
+    .call(g => g.select('.domain').remove())
+    .call(g => g.select('.tick:last-of-type text').clone()
+      .attr('x', 3)
+      .attr('text-anchor', 'start')
+      .attr('font-weight', 'bold')
+      .text(data.y)
+    );
 
   let line = d3.line()
     .defined(d => !isNaN(d.high))
