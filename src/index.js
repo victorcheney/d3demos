@@ -74,6 +74,13 @@ let menuData = [{
     url: 'examples/barchart/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-bar-chart',
     img: 'src/img/barchart.png'
+  },
+  {
+    id: '12',
+    name: '饼图',
+    url: 'examples/piechart/index.html',
+    originUrl: 'https://beta.observablehq.com/@mbostock/d3-pie-chart',
+    img: 'src/img/piechart.png'
   }
 ]
 
