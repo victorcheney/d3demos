@@ -45,3 +45,15 @@
 ### 11、[柱状图](https://victorcheney.github.io/d3demos/examples/barchart/index.html)
 
 ![src/img/RadialStackedBar.png](src/img/barchart.png)
+
+### 12、[饼图](https://victorcheney.github.io/d3demos/examples/piechart/index.html)
+
+![src/img/RadialStackedBar.png](src/img/piechart.png)
+
+### 13、[环形图](https://victorcheney.github.io/d3demos/examples/donutchart/index.html)
+
+![src/img/RadialStackedBar.png](src/img/donutchart.png)
+
+### 14、[带标签环形图](https://victorcheney.github.io/d3demos/examples/piechartlabels/index.html)
+
+![src/img/RadialStackedBar.png](src/img/piechartlabels.png)
