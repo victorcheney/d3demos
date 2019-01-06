@@ -90,7 +90,7 @@ let menuData = [{
     img: 'src/img/donutchart.png'
   },
   {
-    id: '13',
+    id: '14',
     name: '带标签的环形图',
     url: 'examples/piechartlabels/index.html',
     originUrl: 'http://bl.ocks.org/dbuezas/9306799',
