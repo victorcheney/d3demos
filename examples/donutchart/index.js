@@ -1,3 +1,5 @@
+// http://bl.ocks.org/ChandrakantThakkarDigiCorp/f73b89c530d8d38e074d4f3ab157032b
+
 // 赛诺-2018年1月~11月手机显示市场销售排名数据
 let data = [{
     name: 'HONOR',

@@ -88,6 +88,13 @@ let menuData = [{
     url: 'examples/donutchart/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-donut-chart',
     img: 'src/img/donutchart.png'
+  },
+  {
+    id: '13',
+    name: '带标签的环形图',
+    url: 'examples/piechartlabels/index.html',
+    originUrl: 'http://bl.ocks.org/dbuezas/9306799',
+    img: 'src/img/piechartlabels.png'
   }
 ]
 
