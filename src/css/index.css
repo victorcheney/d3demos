@@ -78,7 +78,7 @@ header h2 {
     width: 100%;
 }
 
-.p-link > a {
+.p-link>a {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -124,19 +124,20 @@ header h2 {
     margin: 10px;
     transition-duration: 0.3s;
     transition-property: box-shadow, transform;
-  }
-  .hover-shadow-box-animation:hover,
-  .hover-shadow-box-animation:focus,
-  .hover-shadow-box-animation:active {
+}
+
+.hover-shadow-box-animation:hover,
+.hover-shadow-box-animation:focus,
+.hover-shadow-box-animation:active {
     box-shadow: 1px 10px 10px -10px rgba(255, 255, 255, 1);
     transform: scale(1.02);
-  }
+}
 
-  canvas{
-      position: absolute;
-      top: 0;
+canvas {
+    position: absolute;
+    top: 0;
     margin: 0;
     padding: 0;
-    display: block; 
-    touch-action: none; 
-  }
+    display: block;
+    touch-action: none;
+}
