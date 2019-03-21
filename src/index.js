@@ -103,11 +103,19 @@ function formatMainpageMenu(menuData) {
 
   menuData = menuData.map((item) => {
 
-    let tempStr = `<li>
-        <img src="${item.img}" alt="">
+    let tempStr = `<li class="hover-shadow-box-animation">
         <div class="p-link">
-          <a href="${item.url}">${item.name}</a>
-          <a href="${item.originUrl}"><i class="fa fa-link"></i></a>
+          <a href="${item.url}">
+            <img src="${item.img}" alt=""/>
+            <div>
+              <h4>${item.name}</h4>
+              <object>
+                <a href="${item.originUrl}">
+                  <i class="fa fa-link"></i>
+                </a>
+              </object>
+            </div>
+          </a>
         </div>
       </li>`;
 
