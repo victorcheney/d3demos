@@ -131,3 +131,12 @@ header h2 {
     box-shadow: 1px 10px 10px -10px rgba(255, 255, 255, 1);
     transform: scale(1.02);
   }
+
+  canvas{
+      position: absolute;
+      top: 0;
+    margin: 0;
+    padding: 0;
+    display: block; 
+    touch-action: none; 
+  }
