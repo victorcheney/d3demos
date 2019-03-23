@@ -158,6 +158,9 @@ canvas {
 
 @media screen and (max-width : 920px) {
     .list-container li{
-        width: 100%;
+        width: 50%;
+    }
+    .list-container {
+        margin: 0 10px;
     }
 }
