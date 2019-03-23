@@ -141,12 +141,13 @@ let initChart = function() {
   .attr('height', height);
 
   const bar = svg.append("g")
-    // .attr("fill", "steelblue")
-    .attr("fill", "#ddd")
+    // .attr("fill", "blue")
+    // .attr("fill", "#ddd")
+    .attr("class", 'barrect')
     .selectAll("rect")
     .data(data)
     .enter().append("rect")
-    .style("mix-blend-mode", "multiply")
+    // .style("mix-blend-mode", "multiply")
     .attr("x", d => x(d.name))
     .attr("y", d => y(d.value))
     .attr("height", d => y(0) - y(d.value))

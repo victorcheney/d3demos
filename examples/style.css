@@ -13,11 +13,16 @@ ul,li {
 
 .container {
   display: flex;
+  background: #201e1e;
+  height: 100%;
 }
 .aside {
   height: 100%;
-  width: 300px;
+  width: 350px;
   border-right: 1px solid #ddd;
+  background: #fff;
+  overflow-y: scroll;
+  overflow-x: visible
 }
 
 .content {
@@ -25,16 +30,17 @@ ul,li {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background: #eee;
+  /* background: #eee; */
 }
 
 .title {
   text-align: center;
+  color: #b2d166;
 }
 
 .chart-container {
   padding: 15px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   min-height: 600px;
 }
 
@@ -42,11 +48,12 @@ ul,li {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #8fac4a;
 }
 
 .menu {
   padding: 10px 0;
-  width: 300px;
+  /* width: 300px; */
 }
 
 .menu-item {
@@ -66,6 +73,9 @@ ul,li {
   height: 100%;
   width: 100%;
   transition: all .3s;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 .menu-item a:last-child {
@@ -91,4 +101,41 @@ ul,li {
   color: #fff;
 }
 
+select {
+  height: 30px;
+  min-width: 120px;
+  border-radius: 2px;
+}
 
+button {
+  height: 30px;
+  min-width: 80px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+form label {
+  color: #8fac4a;
+}
+
+/* 图表样式 */
+.domain {
+  fill: none;
+  stroke: #201e1e;
+}
+
+.tick line {
+  stroke: #8fac4a;
+}
+
+.text-color, .tick text {
+  fill: #8fac4a;
+}
+
+.barrect {
+  fill: #41433d;
+}
+
+.line-color {
+  stroke:#b2d166;
+}

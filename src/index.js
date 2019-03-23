@@ -22,7 +22,7 @@ let menuData = [{
   {
     id: '4',
     name: '排序柱状图',
-    url: 'examples/sortablebarchart/index.html',
+    url: 'examples/sortableBarChart/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-sortable-bar-chart',
     img: 'src/img/sortablebarchart.png'
   },
@@ -102,6 +102,13 @@ let menuData = [{
     url: 'examples/matrixdiagram/index.html',
     originUrl: 'https://bost.ocks.org/mike/miserables/',
     img: 'src/img/matrixdiagram.png'
+  },
+  {
+    id: '16',
+    name: 'NBA球员场均得分',
+    url: 'examples/nbaplayerpoints/index.html',
+    originUrl: 'https://beta.observablehq.com/@mbostock/d3-sortable-bar-chart',
+    img: 'src/img/sortablebarchart.png'
   }
 ]
 

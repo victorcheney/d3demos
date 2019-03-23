@@ -132,7 +132,8 @@ let chart = function(data) {
     .attr('stroke-width', 1.5)
     .attr('stroke-linejoin', 'round')
     .attr('stroke-linecap', 'round')
-    .attr('d', line);
+    .attr('d', line)
+    .attr('class', 'line-color');
 }
 
 // 

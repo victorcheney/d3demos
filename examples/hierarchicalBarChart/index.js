@@ -234,7 +234,8 @@ function bar(d) {
         .style("text-anchor", "end")
         .text(function (d) {
             return d.data.name;
-        });
+        })
+        .attr('class', 'text-color');
 
     bar.append("rect")
         .attr("width", function (d) {

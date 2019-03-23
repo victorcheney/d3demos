@@ -84,7 +84,8 @@ d3.json("20190323111050.json").then(function (miserables) {
     .attr("y", x.bandwidth() / 2)
     .attr("dy", "12px")
     .attr("text-anchor", "end")
-    .attr("fill", "#333")
+    .attr("class", "text-color")
+    .attr("font-size", "12")
     .text(function (d, i) {
       return nodes[i].name;
     });
@@ -105,7 +106,8 @@ d3.json("20190323111050.json").then(function (miserables) {
     .attr("y", x.bandwidth() / 2)
     .attr("dy", "10px")
     .attr("text-anchor", "start")
-    .attr("fill", "#333")
+    .attr("class", "text-color")
+    .attr("font-size", "12")
     .text(function (d, i) {
       return nodes[i].name;
     });

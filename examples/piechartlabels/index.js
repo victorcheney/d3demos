@@ -164,6 +164,7 @@ function change(data) {
 
   /* 文本标签 */
   let text = svg.select('.labels').selectAll('text')
+    .attr('class', 'text-color')
     .data(arcs);
 
   text.enter()
