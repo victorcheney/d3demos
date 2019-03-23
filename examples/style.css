@@ -13,7 +13,6 @@ ul,li {
 
 .container {
   display: flex;
-  height: 100%;
 }
 .aside {
   height: 100%;
@@ -36,7 +35,7 @@ ul,li {
 .chart-container {
   padding: 15px;
   overflow-y: scroll;
-  height: 600px;
+  min-height: 600px;
 }
 
 .chart-container > div {

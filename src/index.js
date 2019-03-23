@@ -95,6 +95,13 @@ let menuData = [{
     url: 'examples/piechartlabels/index.html',
     originUrl: 'http://bl.ocks.org/dbuezas/9306799',
     img: 'src/img/piechartlabels.png'
+  },
+  {
+    id: '15',
+    name: '矩阵图',
+    url: 'examples/matrixdiagram/index.html',
+    originUrl: 'https://bost.ocks.org/mike/miserables/',
+    img: 'src/img/matrixdiagram.png'
   }
 ]
 
@@ -110,7 +117,7 @@ function formatMainpageMenu(menuData) {
               <img src="${item.img}" alt=""/>
             </div>
             <div class="title">
-              <span>${item.name}</span>
+              <span class="ellipsis">${item.name}</span>
               <object>
                 <a href="${item.originUrl}">
                   <i class="fa fa-link"></i>
