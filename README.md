@@ -2,13 +2,15 @@
 
 ## [主界面](https://victorcheney.github.io/d3demos/index.html)
 
-### 1、[径向堆积柱状图](https://victorcheney.github.io/d3demos/examples/RadialStackedBar/index.html)
+| | |
+| -- | -- |
+|### 1、[径向堆积柱状图](https://victorcheney.github.io/d3demos/examples/RadialStackedBar/index.html)
 
-![src/img/RadialStackedBar.png](src/img/RadialStackedBar.png)
+![src/img/RadialStackedBar.png](src/img/RadialStackedBar.png)|
 
 ### 2、[带可编辑注释的折线图](https://victorcheney.github.io/d3demos/examples/riseOfBitcoin/index.html)
 
-![src/img/RadialStackedBar.png](src/img/riseOfBitcoin.png)
+![src/img/RadialStackedBar.png](src/img/riseOfBitcoin.png)|
 
 ### 3、[分层条形图](https://victorcheney.github.io/d3demos/examples/hierarchicalBarChart/index.html)
 
