@@ -5,22 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>分层条形图</title>
+  <title>带标签的环形图</title>
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="../style.css">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
   <style>
-    text {
-      font: 10px sans-serif;
+    path.slice{
+      stroke-width:2px;
     }
 
-    rect.background {
-      fill: transparent;
+    .labels text {
+      fill: #8fac4a;
     }
 
-    .axis {
-      shape-rendering: crispEdges;
+    polyline{
+      opacity: .3;
+      stroke: #b2d166;
+      stroke-width: 2px;
+      fill: none;
     }
-
   </style>
 </head>
 
@@ -28,24 +33,27 @@
 
   <div class="container">
     <aside class="aside">
+      <!-- 菜单 -->
     </aside>
 
     <section class="content">
       <header>
-        <h3 class="title">分层条形图</h3>
+        <h3 class="title">带标签的环形图</h3>
       </header>
       <section>
         <div class="chart-container">
+          <button type="button" id="btn">random</button>
+          <!-- 图表展示区 -->
           <div id="chart"></div>
         </div>
       </section>
     </section>
   </div>
 
+
   <script src="../../lib/jquery@3.3.1.js"></script>
   <script type="text/javascript" src="../../src/index.js"></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="index.js"></script>
+  <script type="text/javascript" src="index.js"></script>
 </body>
 
 </html>

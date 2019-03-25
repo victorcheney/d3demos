@@ -5,12 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="shortcut icon" href="src/img/favicon.ico" />
+  <link rel="bookmark" href="src/img/favicon.ico" type="image/x-icon"　/>
+
   <title>D3图表练习</title>
   <link rel="stylesheet" href="src/css/index.css?t=new Date().getTime()">
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
+
+  <canvas></canvas>
 
   <header>
     <h2>D3图表练习</h2>
@@ -18,7 +25,7 @@
 
   <section>
     <div class="list-container">
-      <ul>
+     <!--  <ul>
         <li>
           <img src="src/img/RadialStackedBar.png" alt="">
           <div class="p-link">
@@ -58,24 +65,31 @@
           <img src="src/img/realtimeHorizonChart.png" alt="">
           <div class="p-link">
             <a href="examples/realtimeHorizonChart/index.html">横向实时图表</a>
-            <a href="examples/realtimeHorizonChart/index.html">横向实时图表</a>
             <a href="https://beta.observablehq.com/@mbostock/d3-realtime-horizon-chart" title="原文链接"><i class="fa fa-link"></i></a>
           </div>
         </li>
         <li>
-            <img src="" alt="">
-            <div class="p-link">
-                <a href="examples/blank/index.html">标题</a>
-                <a href="javascript: void(0)" title="原文链接"><i class="fa fa-link"></i></a>
-            </div>
-            </li>
-      </ul>
+          <img src="src/img/stacktogroupbar.png" alt="">
+          <div class="p-link">
+            <a href="examples/stackedToGroupedBars/index.html">堆状条形图分组条形图切换</a>
+            <a href="https://beta.observablehq.com/@mbostock/d3-stacked-to-grouped-bars" title="原文链接"><i class="fa fa-link"></i></a>
+          </div>
+        </li>
+        <li>
+          <img src="" alt="">
+          <div class="p-link">
+            <a href="examples/blank/index.html">标题</a>
+            <a href="javascript: void(0)" title="原文链接"><i class="fa fa-link"></i></a>
+          </div>
+        </li>
+      </ul> -->
     </div>
   </section>
 
   <script src="lib/jquery@3.3.1.js"></script>
   <script src="src/index.js"></script>
-  <!-- <div>111</div> -->
+  <script src="lib/mousemovecanvas.js"></script>
+
 </body>
 
 </html>

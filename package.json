@@ -8,7 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "live-server",
+    "start": "live-server --port=8848",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

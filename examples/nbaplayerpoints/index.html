@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NBA球员得分</title>
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <aside class="aside">
+
+    </aside>
+
+    <section class="content">
+      <header>
+        <h3 class="title">NBA球员数据</h3>
+      </header>
+      <section>
+        <div class="chart-container">
+          <div>
+            <select name="sortablechart" id="sortablechart" onchange="changeSort()">
+              <!-- <option value="name">名字</option> -->
+              <option selected value="pointsPg">场均得分</option>
+              <option value="rebsPg">场均篮板</option>
+              <option value="assistsPg">场均助攻</option>
+              <option value="minsPg">上场时间</option>
+              <option value="efficiency">效率</option>
+              <option value="fgpct">命中率</option>
+              <option value="tppct">三分命中率</option>
+              <option value="ftpct">罚球命中率</option>
+              <option value="stealsPg">场均抢断</option>
+              <option value="blocksPg">场均盖帽</option>
+              <option value="turnoversPg">失误</option>
+              <option value="foulsPg">犯规</option>
+            </select>
+          </div>
+          <div id="chart"></div>
+        </div>
+      </section>
+    </section>
+  </div>
+  
+  <script src="../../lib/jquery@3.3.1.js"></script>
+  <script type="text/javascript" src="../../src/index.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
