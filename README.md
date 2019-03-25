@@ -57,3 +57,12 @@
 ### 14、[带标签环形图](https://victorcheney.github.io/d3demos/examples/piechartlabels/index.html)
 
 ![src/img/RadialStackedBar.png](src/img/piechartlabels.png)
+
+### 15、[矩阵图](https://victorcheney.github.io/d3demos/examples/matrixdiagram/index.html)
+
+![src/img/RadialStackedBar.png](src/img/matrixdiagram.png)
+
+
+### 16、[NBA球员数据](https://victorcheney.github.io/d3demos/examples/nbaplayerpoints/index.html)
+
+![src/img/RadialStackedBar.png](src/img/sortablebarchart.png)
