@@ -114,8 +114,8 @@ let menuData = [{
     id: '17',
     name: '力导向图一',
     url: 'examples/forcechart1/index.html',
-    originUrl: 'https://beta.observablehq.com/@mbostock/d3-sortable-bar-chart',
-    img: 'src/img/sortablebarchart.png'
+    originUrl: 'https://bl.ocks.org/mbostock/2675ff61ea5e063ede2b5d63c08020c7',
+    img: 'src/img/forcechart1.png'
   }
 ]
 
