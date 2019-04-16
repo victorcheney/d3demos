@@ -109,6 +109,13 @@ let menuData = [{
     url: 'examples/nbaplayerpoints/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-sortable-bar-chart',
     img: 'src/img/sortablebarchart.png'
+  },
+  {
+    id: '17',
+    name: '力导向图一',
+    url: 'examples/forcechart1/index.html',
+    originUrl: 'https://beta.observablehq.com/@mbostock/d3-sortable-bar-chart',
+    img: 'src/img/sortablebarchart.png'
   }
 ]
 
