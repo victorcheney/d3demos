@@ -2,10 +2,10 @@ const margin = {
     top: 10,
     right: 120,
     bottom: 10,
-    left: 40
+    left: 150
 };
 
-let width = 600;
+let width = 700;
 
 let dx = 10;
 let dy = width / 6;
@@ -9367,8 +9367,15 @@ let initchart = () => {
     root.descendants().forEach((d, i) => {
         d.id = i;
         d._children = d.children;
-        if (d.depth && d.data.name.length !== 7) d.children = null;
+        if (d.depth > 2) d.children = null;
     });
+
+    // 缩放zoom
+    const zoom = d3.zoom()
+        .scaleExtent([0.5, 5])
+        .on('zoom', () => {
+            d3.select('#chart svg > g').attr("transform", d3.event.transform);                                                                                               
+        })
 
     // const svg = d3.create("svg")
     const svg = d3.select('#chart').append("svg")
@@ -9377,18 +9384,42 @@ let initchart = () => {
         // .attr("height", dx)
         .attr("viewBox", [-margin.left, -margin.top, width, dx])
         .style("font", "10px sans-serif")
-        .style("user-select", "none");
+        .style("user-select", "none")
+        .call(zoom);
 
-    const gLink = svg.append("g")
+    const g = svg.append('g')
+        .attr('class', 'container')
+
+    const gLink = g.append("g")
         .attr("fill", "none")
-        .attr("stroke", "#555")
+        .attr("stroke", "#D0A342")
         .attr("stroke-opacity", 0.4)
-        .attr("stroke-width", 1.5);
+        .attr("stroke-width", 1);
 
-    const gNode = svg.append("g")
-        .attr("cursor", "pointer");
+    const gNode = g.append("g")
+        .attr("cursor", "pointer")
+        .attr('class', 'node');
 
     function update(source) {
+
+        // if (d3.selectAll('g.container')) {
+        //     // d3.selectAll('g.container').remove();
+        // }
+
+        // const g = svg.append('g')
+        //     .attr('class', 'container')
+
+        // const gLink = g.append("g")
+        //     .attr("fill", "none")
+        //     .attr("stroke", "#D0A342")
+        //     .attr("stroke-opacity", 0.4)
+        //     .attr("stroke-width", 1)
+        //     .attr('class', 'container');
+
+        // const gNode = g.append("g")
+        //     .attr("cursor", "pointer")
+        //     .attr('class', 'node');
+        
         const duration = d3.event && d3.event.altKey ? 2500 : 250;
         const nodes = root.descendants().reverse();
         const links = root.links();
@@ -9407,7 +9438,7 @@ let initchart = () => {
 
         const transition = svg.transition()
             .duration(duration)
-            .attr("height", height)
+            .attr("height", Math.max(600, height))
             .attr("viewBox", [-margin.left, left.x - margin.top, width, height])
             .tween("resize", window.ResizeObserver ? null : () => () => svg.dispatch("toggle"));
 
@@ -9420,24 +9451,38 @@ let initchart = () => {
             .attr("transform", d => `translate(${source.y0},${source.x0})`)
             .attr("fill-opacity", 0)
             .attr("stroke-opacity", 0)
+            .attr('data-id', d => d.id)
             .on("click", d => {
                 d.children = d.children ? null : d._children;
+                
+                // 展开节点修改文字位置
+                let curtexts = d3.selectAll(`g[data-id="${d.id}"] text`)
+                if(d.children && d._children) {
+                    curtexts.transition(transition)
+                        .attr('text-anchor', 'end')
+                        .attr('x', -6)
+                } else {
+                    curtexts.transition(transition)
+                    .attr('text-anchor', 'start')
+                        .attr('x', 6)
+                }
                 update(d);
             });
 
         nodeEnter.append("circle")
             .attr("r", 4.5)
-            .attr("fill", d => d._children ? "#555" : "#999");
+            .attr("fill", d => d._children ? "#D0A342" : "#999");
 
         nodeEnter.append("text")
             .attr("dy", "0.31em")
-            .attr("x", d => d._children ? -6 : 6)
-            .attr("text-anchor", d => d._children ? "end" : "start")
+            .attr("x", d => d._children && d.children ? -6 : 6)
+            .attr("text-anchor", d => d._children && d.children ? "end" : "start")
+            .attr('fill', 'rgba(255, 255, 255, 0.7)')
             .text(d => d.data.name)
             .clone(true).lower()
-            .attr("stroke-linejoin", "round")
-            .attr("stroke-width", 3)
-            .attr("stroke", "white");
+            // .attr("stroke-linejoin", "spuare")
+            // .attr("stroke-width", 0.5)
+            // .attr("stroke", "#ddd");
 
         // Transition nodes to their new position.
         const nodeUpdate = node.merge(nodeEnter).transition(transition)
