@@ -5,14 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>空白项目</title>
+  <title>力导向图一</title>
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="shortcut icon" href="../../src/img/favicon.ico" />
-  <link rel="bookmark" href="../../src/img/favicon.ico" type="image/x-icon"　/>
+  <link rel="bookmark" href="../../src/img/favicon.ico" type="image/x-icon" 　 />
 
   <link rel="stylesheet" href="../style.css">
   <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <style>
+    .links line {
+      stroke: #aaa;
+    }
+
+    .nodes circle {
+      pointer-events: all;
+      stroke: none;
+      stroke-width: 40px;
+      fill: #8fac4a
+    }
+  </style>
 </head>
 
 <body>
@@ -24,7 +37,7 @@
 
     <section class="content">
       <header>
-        <h3 class="title">标题</h3>
+        <h3 class="title">力导向图</h3>
       </header>
       <section>
         <div class="chart-container">
