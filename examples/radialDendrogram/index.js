@@ -1,7 +1,7 @@
 // 放射状树
 let width = 900, radius = width / 2;
 
-const tree = d3.cluster().size([2 * Math.PI, radius - 100])
+const tree = d3.cluster().size([2 * Math.PI, radius - 150])
 
 const zoom = d3.zoom()
   .scaleExtent([.5, 4])
@@ -51,15 +51,16 @@ function initChart(data) {
 
     node.append('circle')
       .attr('fill', d => d.children ? '#D0A342' : '#999')
-      .attr('r', 7);
+      .attr('r', 5);
   
     node.append('text')
         .attr('dy', '0.31em')
-        .attr('x', d => d.x < Math.PI === !d.children ? 6 : -6)
+        .attr('font-size', '12px')
+        .attr('x', d => d.x < Math.PI === !d.children ? 10 : -10)
         .attr('text-anchor', d => d.x < Math.PI === !d.children ? 'start' : 'end')
         .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
         .text(d => d.data.name)
-        .attr('fill', '#555')
+        .attr('fill', 'rgba(255, 255, 255, 0.7)')
       .filter(d => d.children)
       .clone(true).lower()
         // .attr('stroke', 'white');
