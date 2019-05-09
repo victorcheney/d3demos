@@ -59,7 +59,7 @@ function initChart(data) {
         .attr('text-anchor', d => d.x < Math.PI === !d.children ? 'start' : 'end')
         .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
         .text(d => d.data.name)
-        .attr('fill', 'rgba(255, 255, 255, 0.7)')
+        .attr('fill', '#555')
       .filter(d => d.children)
       .clone(true).lower()
         // .attr('stroke', 'white');

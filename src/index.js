@@ -122,7 +122,7 @@ let menuData = [{
     name: '放射状树',
     url: 'examples/radialDendrogram/index.html',
     originUrl: 'https://observablehq.com/@d3/radial-dendrogram',
-    img: 'src/img/forcechart1.png'
+    img: 'src/img/radialDendrogram.png'
   }
 ]
 
