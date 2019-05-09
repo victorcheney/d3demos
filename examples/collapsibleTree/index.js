@@ -9402,24 +9402,6 @@ let initchart = () => {
 
     function update(source) {
 
-        // if (d3.selectAll('g.container')) {
-        //     // d3.selectAll('g.container').remove();
-        // }
-
-        // const g = svg.append('g')
-        //     .attr('class', 'container')
-
-        // const gLink = g.append("g")
-        //     .attr("fill", "none")
-        //     .attr("stroke", "#D0A342")
-        //     .attr("stroke-opacity", 0.4)
-        //     .attr("stroke-width", 1)
-        //     .attr('class', 'container');
-
-        // const gNode = g.append("g")
-        //     .attr("cursor", "pointer")
-        //     .attr('class', 'node');
-        
         const duration = d3.event && d3.event.altKey ? 2500 : 250;
         const nodes = root.descendants().reverse();
         const links = root.links();
@@ -9462,9 +9444,11 @@ let initchart = () => {
                         .attr('text-anchor', 'end')
                         .attr('x', -6)
                 } else {
-                    curtexts.transition(transition)
-                    .attr('text-anchor', 'start')
-                        .attr('x', 6)
+                    if(d.id !== 0) {
+                        curtexts.transition(transition)
+                            .attr('text-anchor', 'start')
+                            .attr('x', 6)
+                    }
                 }
                 update(d);
             });
