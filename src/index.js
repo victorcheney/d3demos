@@ -123,6 +123,13 @@ let menuData = [{
     url: 'examples/radialDendrogram/index.html',
     originUrl: 'https://observablehq.com/@d3/radial-dendrogram',
     img: 'src/img/radialDendrogram.png'
+  },
+  {
+    id: '19',
+    name: '可折叠放射状树',
+    url: 'examples/collapsibleRadialDendrogram/index.html',
+    originUrl: 'https://observablehq.com/@d3/radial-dendrogram',
+    img: 'src/img/radialDendrogram.png'
   }
 ]
 
