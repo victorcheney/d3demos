@@ -148,8 +148,8 @@ function formatMainpageMenu(menuData) {
     let tempStr = `<li class="">
         <div class="card-item p-link hover-shadow-box-animation">
           <a href="${item.url}">
-            <div class="img-container">
-              <img src="${item.img}" alt=""/>
+            <div class="img-container" style="background-image: url(${item.img})">
+              <!--<img src="${item.img}" alt=""/>-->
             </div>
             <div class="title">
               <span class="ellipsis">${item.name}</span>
