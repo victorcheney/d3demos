@@ -130,6 +130,13 @@ let menuData = [{
     url: 'examples/collapsibleRadialDendrogram/index.html',
     originUrl: 'https://observablehq.com/@d3/radial-dendrogram',
     img: 'src/img/radialDendrogram.png'
+  },
+  {
+    id: '20',
+    name: '可折叠多父节点树',
+    url: 'examples/multiParentCollapsibleTree/index.html',
+    originUrl: 'https://beta.observablehq.com/@mbostock/collapsible-tree',
+    img: 'src/img/multiParentCollapsibleTree.png'
   }
 ]
 
