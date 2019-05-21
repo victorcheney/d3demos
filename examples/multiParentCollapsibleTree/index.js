@@ -98,7 +98,6 @@ let initchart = (data) => {
         nodes = nodes.filter(item => {
             return hideNames.indexOf(item.data.name) == -1
         })
-        console.log(nodes)
 
         // 重新计算links
         links = []
@@ -106,8 +105,6 @@ let initchart = (data) => {
 
         // 去重
         links = uniqueLink(links)
-
-        console.log(links)
 
         // Compute the new tree layout.
         tree(root);
@@ -327,7 +324,6 @@ function uniqueLink(links) {
 
 
 d3.json('data.json').then(resp => {
-    console.log(resp.data)
     let chart = initchart(resp.data);
     chart.update();
 })
