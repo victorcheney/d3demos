@@ -12,15 +12,15 @@ let dy = width / 6;
 
 let tree = d3.tree().nodeSize([dx, dy]);
 // 贝塞尔曲线
-// let diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+let diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x);
 // 直线
-let diagonal = d3.line()
+/* let diagonal = d3.line()
   .x(function (d) {
     return d.y;
   })
   .y(function (d) {
     return d.x;
-  })
+  }) */
 
 let links = []
 
@@ -198,7 +198,7 @@ let initchart = (data) => {
     // Enter any new links at the parent's previous position.
     const linkEnter = link.enter().append("path")
       // 贝塞尔曲线
-      /* .attr("d", d => {
+      .attr("d", d => {
         const o = {
           x: source.x0,
           y: source.y0
@@ -207,9 +207,9 @@ let initchart = (data) => {
           source: o,
           target: o
         });
-      }); */
+      });
       // 直线
-      .attr("d", d => {
+      /* .attr("d", d => {
         return diagonal([{
           x: d.source.x,
           y: d.source.y
@@ -217,14 +217,14 @@ let initchart = (data) => {
           x: d.target.x,
           y: d.target.y
         }]);
-      });
+      }); */
 
     // Transition links to their new position.
     link.merge(linkEnter).transition(transition)
       // 贝塞尔曲线
-      // .attr("d", diagonal);
+      .attr("d", diagonal);
       // 直线
-      .attr("d", d => {
+      /* .attr("d", d => {
         return diagonal([{
           x: d.source.x,
           y: d.source.y
@@ -232,7 +232,7 @@ let initchart = (data) => {
           x: d.target.x,
           y: d.target.y
         }]);
-      });
+      }); */
 
     // Transition exiting nodes to the parent's new position.
     link.exit().transition(transition).remove()
