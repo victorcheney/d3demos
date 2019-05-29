@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: victorcheney
+ * @Date: 2019-05-21 09:39:21
+ * @LastEditTime: 2019-05-23 16:30:51
+ * @LastEditors: victorcheney
+ */
 const margin = {
   top: 10,
   right: 120,

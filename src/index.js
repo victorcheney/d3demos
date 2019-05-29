@@ -119,20 +119,27 @@ let menuData = [{
   },
   {
     id: '18',
+    name: '力导向图二',
+    url: 'examples/forcechart2/index.html',
+    originUrl: 'https://bl.ocks.org/mbostock/2675ff61ea5e063ede2b5d63c08020c7',
+    img: 'src/img/forcechart1.png'
+  },
+  {
+    id: '19',
     name: '放射状树',
     url: 'examples/radialDendrogram/index.html',
     originUrl: 'https://observablehq.com/@d3/radial-dendrogram',
     img: 'src/img/radialDendrogram.png'
   },
   {
-    id: '19',
+    id: '20',
     name: '可折叠放射状树',
     url: 'examples/collapsibleRadialDendrogram/index.html',
     originUrl: 'https://observablehq.com/@d3/radial-dendrogram',
     img: 'src/img/radialDendrogram.png'
   },
   {
-    id: '20',
+    id: '21',
     name: '可折叠多父节点树',
     url: 'examples/multiParentCollapsibleTree/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/collapsible-tree',
