@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body id="body">
 
   <canvas></canvas>
 
@@ -89,10 +89,13 @@
   <script src="lib/jquery@3.3.1.js"></script>
   <script src="src/index.js"></script>
   <script src="lib/mousemovecanvas.js"></script>
+  <script src="lib/particles.js"></script>
+
   <script>
-    const newArr = new Map()
-        .set('name', '峰涛兄')
-    // 试问？ please get name
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+    particlesJS.load('body', 'lib/particles.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
   </script>
 </body>
 

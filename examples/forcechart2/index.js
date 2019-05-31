@@ -10,9 +10,9 @@ const zoom = d3.zoom()
   .scaleExtent([0.5, 5])
   .on('zoom', zoomed)
 
-  function zoomed () {
-    d3.selectAll('g').attr('transform', d3.event.transform)
-  }
+function zoomed() {
+  d3.selectAll('g').attr('transform', d3.event.transform)
+}
 
 var svg = d3.select('#chart').append('svg')
   .attr('width', width)
@@ -66,25 +66,25 @@ d3.json('data.json')
       .selectAll('.text')
       .data(graph.links);
 
-      path.exit().remove();
-      var pathEnter = path.enter().append('path').
-      attr('class', 'path')
-        .attr('fill-opacity', 0)
-        .attr('stroke-opacity', 0)
-        .attr('fill', 'blue')
-        .attr('stroke', 'red')
-        .attr('id', function (d, i) {
-          return 'link' + i
-        })
-        .style("pointer-events", "none");
-      path = pathEnter.merge(path);
+    path.exit().remove();
+    var pathEnter = path.enter().append('path')
+      .attr('class', 'path')
+      .attr('fill-opacity', 0)
+      .attr('stroke-opacity', 0)
+      .attr('fill', 'blue')
+      .attr('stroke', 'red')
+      .attr('id', function (d, i) {
+        return 'link' + i
+      })
+      .style("pointer-events", "none");
+    path = pathEnter.merge(path);
 
     // link上的文字
     var linkText = svg.append('g')
       .attr('class', 'link-text')
       .selectAll('.text')
       .data(graph.links)
-    
+
     // remove exit  
     linkText.exit().remove()
     var linkTextEnter = linkText.enter()
