@@ -31,7 +31,7 @@ const data = {
       scale: 92,
       sales: 100,
       profit: 60,
-      status: 0
+      status: 0,
     },
     {
       name: '子公司3',
@@ -40,7 +40,239 @@ const data = {
       sales: 350,
       profit: 200,
       status: 1
-    }
+    },
+    {
+      time: '2002-09-01',
+      scale: 115,
+      sales: 290,
+      profit: 120,
+      name: '子公司4',
+      status: 1
+    },
+    {
+      time: '2002-01-01',
+      scale: 80,
+      sales: 250,
+      profit: 110,
+      name: '子公司5',
+      status: 1
+    },
+    {
+      time: '2002-01-01',
+      scale: 170,
+      sales: 350,
+      profit: 120,
+      name: '子公司6',
+      status: 1
+    },
+    {
+      time: '2004-01-01',
+      scale: 145,
+      sales: 350,
+      profit: 160,
+      name: '子公司7',
+      status: 1
+    },
+    {
+      time: '2004-08-01',
+      scale: 110,
+      sales: 200,
+      profit: 100,
+      name: '子公司8',
+      status: 1
+    },
+    {
+      time: '2004-03-01',
+      scale: 195,
+      sales: 300,
+      profit: 120,
+      name: '子公司9',
+      status: 1
+    },
+    {
+      time: '2003-11-01',
+      scale: 75,
+      sales: 280,
+      profit: 120,
+      name: '子公司10',
+      status: 1
+    },
+    {
+      time: '2005-06-01',
+      scale: 80,
+      sales: 160,
+      profit: 80,
+      name: '子公司11',
+      status: 1
+    },
+    {
+      time: '2005-11-01',
+      scale: 170,
+      sales: 310,
+      profit: 160,
+      name: '子公司12',
+      status: 0
+    },
+    {
+      time: '2006-04-01',
+      scale: 105,
+      sales: 280,
+      profit: 120,
+      name: '子公司13',
+      status: 1
+    },
+    {
+      time: '2006-09-01',
+      scale: 140,
+      sales: 200,
+      profit: 80,
+      name: '子公司14',
+      status: 1
+    },
+    {
+      time: '2007-07-01',
+      scale: 200,
+      sales: 400,
+      profit: 180,
+      name: '子公司15',
+      status: 1
+    },
+    {
+      time: '2008-05-01',
+      scale: 150,
+      sales: 320,
+      profit: 130,
+      name: '子公司16',
+      status: 1
+    },
+    {
+      time: '2007-07-01',
+      scale: 90,
+      sales: 220,
+      profit: 100,
+      name: '子公司17',
+      status: 1
+    },
+    {
+      time: '2008-09-01',
+      scale: 110,
+      sales: 240,
+      profit: 100,
+      name: '子公司18',
+      status: 1
+    },
+    {
+      time: '2010-01-01',
+      scale: 90,
+      sales: 210,
+      profit: 80,
+      name: '子公司19',
+      status: 1
+    },
+    {
+      time: '2009-08-01',
+      scale: 190,
+      sales: 280,
+      profit: 110,
+      name: '子公司20',
+      status: 1
+    },
+    {
+      time: '2010-06-01',
+      scale: 155,
+      sales: 210,
+      profit: 110,
+      name: '子公司21',
+      status: 1
+    },
+    {
+      time: '2010-03-01',
+      scale: 120,
+      sales: 180,
+      profit: 80,
+      name: '子公司22',
+      status: 1
+    },
+    {
+      time: '2011-05-01',
+      scale: 200,
+      sales: 300,
+      profit: 140,
+      name: '子公司23',
+      status: 1
+    },
+    {
+      time: '2013-10-01',
+      scale: 130,
+      sales: 200,
+      profit: 100,
+      name: '子公司24',
+      status: 1
+    },
+    {
+      time: '2013-10-01',
+      scale: 80,
+      sales: 240,
+      profit: 100,
+      name: '子公司25',
+      status: 1
+    },
+    {
+      time: '2011-09-01',
+      scale: 85,
+      sales: 280,
+      profit: 130,
+      name: '子公司26',
+      status: 1
+    },
+    {
+      time: '2012-07-01',
+      scale: 150,
+      sales: 380,
+      profit: 160,
+      name: '子公司27',
+      status: 1
+    },
+    {
+      time: '2015-01-01',
+      scale: 150,
+      sales: 190,
+      profit: 90,
+      name: '子公司28',
+      status: 1
+    },
+    {
+      time: '2012-02-01',
+      scale: 120,
+      sales: 160,
+      profit: 60,
+      name: '子公司29',
+      status: 1
+    },
+    {
+      time: '2014-02-01',
+      scale: 180,
+      sales: 245,
+      profit: 110,
+      name: '子公司30',
+      status: 0
+    },
+    {
+      time: '2015-06-01',
+      scale: 110,
+      sales: 300,
+      profit: 140,
+      name: '子公司31',
+      status: 1
+    },
+    {
+      time: '2015-11-01',
+      scale: 60,
+      sales: 300,
+      profit: 150,
+      name: '子公司32',
+      status: 1
+    },
   ]
 }
 
