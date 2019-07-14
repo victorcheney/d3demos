@@ -144,6 +144,13 @@ let menuData = [{
     url: 'examples/multiParentCollapsibleTree/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/collapsible-tree',
     img: 'src/img/multiParentCollapsibleTree.png'
+  },
+  {
+    id: '22',
+    name: '孔雀图',
+    url: 'examples/peafowls/index.html',
+    originUrl: 'https://zhuanlan.zhihu.com/p/70084294?utm_source=wechat_session&utm_medium=social&utm_oi=692747945681883136',
+    img: 'src/img/peafowls.png'
   }
 ]
 
