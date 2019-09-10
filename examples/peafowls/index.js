@@ -507,7 +507,7 @@ const initChart = () => {
     .append('svg')
     .attr('width', width)
     .attr('height', height)
-    .attr('style', `background: -webkit-radial-gradient(#0f2aaf, #000a3c 80%)`)
+    // .attr('style', `background: -webkit-radial-gradient(#0f2aaf, #000a3c 80%)`)
 
     // 定义根节点容器
     const rootNodeG = svg.append('g').attr('class', 'root-node-g')
