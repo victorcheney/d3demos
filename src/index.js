@@ -1,4 +1,5 @@
-let menuData = [{
+let menuData = [
+  {
     id: '1',
     name: '径向堆积柱状图',
     url: 'examples/RadialStackedBar/index.html',
@@ -9,7 +10,8 @@ let menuData = [{
     id: '2',
     name: '带可编辑注释的折线图',
     url: 'examples/riseOfBitcoin/index.html',
-    originUrl: 'https://beta.observablehq.com/@bsurnida/d3-annotation-with-d3-line-chart',
+    originUrl:
+      'https://beta.observablehq.com/@bsurnida/d3-annotation-with-d3-line-chart',
     img: 'src/img/riseOfBitcoin.png'
   },
   {
@@ -30,21 +32,24 @@ let menuData = [{
     id: '5',
     name: '螺旋曲线显示随时间变化数据',
     url: 'examples/condegramSpiralPlot/index.html',
-    originUrl: 'https://bl.ocks.org/arpitnarechania/027e163073864ef2ac4ceb5c2c0bf616t',
+    originUrl:
+      'https://bl.ocks.org/arpitnarechania/027e163073864ef2ac4ceb5c2c0bf616t',
     img: 'src/img/condegramSpiralPlot.png'
   },
   {
     id: '6',
     name: '横向实时图表',
     url: 'examples/realtimeHorizonChart/index.html',
-    originUrl: 'https://beta.observablehq.com/@mbostock/d3-realtime-horizon-chart',
+    originUrl:
+      'https://beta.observablehq.com/@mbostock/d3-realtime-horizon-chart',
     img: 'src/img/realtimeHorizonChart.png'
   },
   {
     id: '7',
     name: '堆状条形图分组条形图切换',
     url: 'examples/stackedToGroupedBars/index.html',
-    originUrl: 'https://beta.observablehq.com/@mbostock/d3-stacked-to-grouped-bars',
+    originUrl:
+      'https://beta.observablehq.com/@mbostock/d3-stacked-to-grouped-bars',
     img: 'src/img/stacktogroupbar.png'
   },
   {
@@ -149,16 +154,16 @@ let menuData = [{
     id: '22',
     name: '孔雀图',
     url: 'examples/peafowls/index.html',
-    originUrl: 'https://zhuanlan.zhihu.com/p/70084294?utm_source=wechat_session&utm_medium=social&utm_oi=692747945681883136',
+    originUrl:
+      'https://zhuanlan.zhihu.com/p/70084294?utm_source=wechat_session&utm_medium=social&utm_oi=692747945681883136',
     img: 'src/img/peafowls.png'
   }
 ]
 
 function formatMainpageMenu(menuData) {
-  let menuStr = '<ul>~</ul>';
+  let menuStr = '<ul><button class="btn">测试</button>~</ul>'
 
-  menuData = menuData.map((item) => {
-
+  menuData = menuData.map(item => {
     let tempStr = `<li class="">
         <div class="card-item p-link hover-shadow-box-animation">
           <a href="${item.url}" target="_blank">
@@ -175,37 +180,35 @@ function formatMainpageMenu(menuData) {
             </div>
           </a>
         </div>
-      </li>`;
+      </li>`
 
-    return tempStr;
-  });
+    return tempStr
+  })
 
   return menuStr.replace(/~/, menuData.join(''))
 }
 
 function formatItempageMenu(menuData) {
-  let menuStr = '<ul class="menu">~</ul>';
+  let menuStr = '<ul class="menu">~</ul>'
 
-  menuData = menuData.map((item) => {
-
+  menuData = menuData.map(item => {
     let tempStr = `
       <li class="menu-item">
         <a href="../../${item.url}"><span>${item.name}</span></a>
         <a href="${item.originUrl}"><i class="fa fa-link"></i></a>
       </li>
-      `;
+      `
 
-    return tempStr;
-  });
+    return tempStr
+  })
 
   return menuStr.replace(/~/, menuData.join(''))
 }
 
-
 // 主页面列表html
-$('.list-container').html(formatMainpageMenu(menuData));
+$('.list-container').html(formatMainpageMenu(menuData))
 
-$('.aside').html(formatItempageMenu(menuData));
+$('.aside').html(formatItempageMenu(menuData))
 
 /* 
 <ul class="menu">
