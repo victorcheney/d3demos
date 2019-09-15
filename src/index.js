@@ -161,7 +161,7 @@ function formatMainpageMenu(menuData) {
 
     let tempStr = `<li class="">
         <div class="card-item p-link hover-shadow-box-animation">
-          <a href="${item.url}">
+          <a href="${item.url}" target="_blank">
             <div class="img-container" style="background-image: url(${item.img})">
               <!--<img src="${item.img}" alt=""/>-->
             </div>
