@@ -161,8 +161,7 @@ let menuData = [
 ]
 
 function formatMainpageMenu(menuData) {
-  let menuStr =
-    '<ul><button class="btn" style="position: absolute; z-index: 1000;">测试</button>~</ul>'
+  let menuStr = '<ul>~</ul>'
 
   menuData = menuData.map(item => {
     let tempStr = `<li class="">
