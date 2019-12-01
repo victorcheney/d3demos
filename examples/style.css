@@ -5,7 +5,8 @@ body {
   height: 100%;
 }
 
-ul,li {
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -22,7 +23,7 @@ ul,li {
   border-right: 1px solid #ddd;
   background: #fff;
   overflow-y: scroll;
-  overflow-x: visible
+  overflow-x: visible;
 }
 
 .content {
@@ -54,6 +55,7 @@ ul,li {
 .menu {
   padding: 10px 0;
   /* width: 300px; */
+  background: #252526;
 }
 
 .menu-item {
@@ -63,34 +65,34 @@ ul,li {
   padding: 5px 10px;
   border-bottom: 1px solid #eee;
   line-height: 40px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .menu-item a {
-  color: #333;
+  color: #ccc;
   text-decoration: none;
   display: inline-block;
   height: 100%;
   width: 100%;
-  transition: all .3s;
+  transition: all 0.3s;
   overflow: hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .menu-item a:last-child {
   width: 60px;
-  text-align: right
+  text-align: right;
 }
 
-.ellipsis{
+.ellipsis {
   overflow: hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .menu-item:hover {
-  background: #ddd;
+  background: #1e1e1e;
 }
 
 .menu-item.active {
@@ -128,7 +130,8 @@ form label {
   stroke: #8fac4a;
 }
 
-.text-color, .tick text {
+.text-color,
+.tick text {
   fill: #8fac4a;
 }
 
@@ -137,5 +140,5 @@ form label {
 }
 
 .line-color {
-  stroke:#b2d166;
+  stroke: #b2d166;
 }
