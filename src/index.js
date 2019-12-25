@@ -157,6 +157,14 @@ let menuData = [
     originUrl:
       'https://zhuanlan.zhihu.com/p/70084294?utm_source=wechat_session&utm_medium=social&utm_oi=692747945681883136',
     img: 'src/img/peafowls.png'
+  },
+  {
+    id: '23',
+    name: 'CirclePacking',
+    url: 'examples/CirclePacking/index.html',
+    originUrl:
+      'https://observablehq.com/@d3/circle-packing',
+    img: 'src/img/peafowls.png'
   }
 ]
 
