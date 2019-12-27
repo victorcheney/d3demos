@@ -162,9 +162,8 @@ let menuData = [
     id: '23',
     name: 'CirclePacking',
     url: 'examples/CirclePacking/index.html',
-    originUrl:
-      'https://observablehq.com/@d3/circle-packing',
-    img: 'src/img/peafowls.png'
+    originUrl: 'https://observablehq.com/@d3/zoomable-circle-packing',
+    img: 'src/img/circlepacking.png'
   }
 ]
 
