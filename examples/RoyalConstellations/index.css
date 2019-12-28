@@ -1,0 +1,106 @@
+body {
+  font-family: 'Muli', sans-serif;
+}
+.content {
+  overflow-y: scroll;
+}
+.chart-container {
+  display: flex;
+  min-height: unset;
+}
+.chart-container > div {
+  display: unset;
+}
+#chart {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  display: unset;
+}
+
+#chart canvas {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#chart svg {
+  z-index: 2;
+  fill: #201e1e;
+}
+
+.hoverRect {
+  fill: none;
+  pointer-events: all;
+}
+
+.royal-name {
+  text-anchor: middle;
+  font-size: 16px;
+  fill: #c9c6c0;
+}
+
+.royal-country {
+  text-anchor: middle;
+  font-size: 11px;
+  fill: #7e7b72;
+}
+
+.interesting-royal-name {
+  font-size: 11px;
+  pointer-events: none;
+  font-family: 'IM Fell DW Pica', serif;
+}
+
+.birth-year-label {
+  text-anchor: end;
+  font-size: 12px;
+  fill: #7e7b72;
+}
+
+.axis text {
+  fill: #d2d2d2;
+  font-size: 18px;
+  font-family: 'IM Fell DW Pica', serif;
+}
+
+.axis line {
+  stroke: none;
+}
+
+#legend {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+.legend-node-text,
+.legend-link-text,
+.legend-color-text,
+.legend-color-value {
+  font-size: 12px;
+  fill: #c9c6c0;
+  font-family: 'IM Fell DW Pica', serif;
+}
+
+.legend-link-text,
+.legend-color-text {
+  text-anchor: middle;
+}
+
+.link,
+.link-path-legend {
+  stroke: #d4d4d4;
+  fill: none;
+  opacity: 0.6;
+  stroke-width: 1.5px;
+  pointer-events: none;
+}
+
+.link-couple {
+  stroke-dasharray: 5, 5;
+}
+
+.legend-color-path {
+  fill: none;
+  stroke-linecap: round;
+}
