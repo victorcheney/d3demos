@@ -177,7 +177,7 @@ let menuData = [
     name: 'alis',
     url: 'examples/alis/index.html',
     originUrl: 'https://www.visualcinnamon.com/portfolio/alis-os',
-    img: 'src/img/royalConstellations.png'
+    img: 'src/img/alis.png'
   }
 ]
 
