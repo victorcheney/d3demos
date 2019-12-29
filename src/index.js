@@ -171,6 +171,13 @@ let menuData = [
     url: 'examples/RoyalConstellations/index.html',
     originUrl: 'http://www.datasketch.es/october/code/nadieh/',
     img: 'src/img/royalConstellations.png'
+  },
+  {
+    id: '25',
+    name: 'alis',
+    url: 'examples/alis/index.html',
+    originUrl: 'https://www.visualcinnamon.com/portfolio/alis-os',
+    img: 'src/img/royalConstellations.png'
   }
 ]
 
