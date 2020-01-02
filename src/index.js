@@ -113,7 +113,7 @@ let menuData = [
     name: 'NBA球员场均得分',
     url: 'examples/nbaplayerpoints/index.html',
     originUrl: 'https://beta.observablehq.com/@mbostock/d3-sortable-bar-chart',
-    img: 'src/img/sortablebarchart.png'
+    img: 'src/img/sortablebarchartNBA.png'
   },
   {
     id: '17',
@@ -127,7 +127,7 @@ let menuData = [
     name: '力导向图二',
     url: 'examples/forcechart2/index.html',
     originUrl: 'https://bl.ocks.org/mbostock/2675ff61ea5e063ede2b5d63c08020c7',
-    img: 'src/img/forcechart1.png'
+    img: 'src/img/forcechart2.png'
   },
   {
     id: '19',
