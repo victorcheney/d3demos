@@ -136,7 +136,7 @@ function chart() {
     .attr('height', height)
 
     svg.append('g')
-      .attr('fill', '#aaa')
+      .attr('fill', '#b2d166')
       .selectAll('rect').data(data).enter().append('rect')
         .attr('x', d => x(d.name))
         .attr('y', d => y(d.value))
