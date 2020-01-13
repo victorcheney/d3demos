@@ -178,6 +178,13 @@ let menuData = [
     url: 'examples/alis/index.html',
     originUrl: 'https://www.visualcinnamon.com/portfolio/alis-os',
     img: 'src/img/alis.png'
+  },
+  {
+    id: '26',
+    name: '世界地图',
+    url: 'examples/worldmap/index.html',
+    originUrl: '',
+    img: 'src/img/alis.png'
   }
 ]
 
