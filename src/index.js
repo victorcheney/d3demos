@@ -184,7 +184,7 @@ let menuData = [
     name: '世界地图',
     url: 'examples/worldmap/index.html',
     originUrl: '',
-    img: 'src/img/alis.png'
+    img: 'src/img/worldmap.png'
   }
 ]
 

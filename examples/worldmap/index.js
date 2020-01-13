@@ -26,7 +26,6 @@ svg.call(
 )
 
 d3.json('./countries-110m.json').then(data => {
-  console.log(data.objects.countries)
   const countries = topojson.feature(data, data.objects.countries)
 
   let taiwanFeatures = countries.features.filter(d => {
