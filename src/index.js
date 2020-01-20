@@ -130,6 +130,13 @@ let menuData = [
     img: 'src/img/forcechart2.png'
   },
   {
+    id: '27',
+    name: '力导向图三',
+    url: 'examples/forcechart3/index.html',
+    originUrl: 'https://bl.ocks.org/mbostock/2675ff61ea5e063ede2b5d63c08020c7',
+    img: 'src/img/forcechart2.png'
+  },
+  {
     id: '19',
     name: '放射状树',
     url: 'examples/radialDendrogram/index.html',
