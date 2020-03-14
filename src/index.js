@@ -199,6 +199,13 @@ let menuData = [
     url: 'examples/forceDirectedTree/index.html',
     originUrl: '',
     img: 'src/img/forceDirectedTree.png'
+  },
+  {
+    id: '27',
+    name: '红楼梦-力导向树',
+    url: 'examples/forceDirectedTreeHonglou/index.html',
+    originUrl: '',
+    img: 'src/img/forceDirectedTreeHonglou.png'
   }
 ]
 
