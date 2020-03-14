@@ -192,6 +192,13 @@ let menuData = [
     url: 'examples/worldmap/index.html',
     originUrl: '',
     img: 'src/img/worldmap.png'
+  },
+  {
+    id: '27',
+    name: '力导向树',
+    url: 'examples/forceDirectedTree/index.html',
+    originUrl: '',
+    img: 'src/img/forceDirectedTree.png'
   }
 ]
 

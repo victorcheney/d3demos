@@ -7,6 +7,7 @@ body {
 .chart-container {
   display: flex;
   min-height: unset;
+  height: unset;
 }
 .chart-container > div {
   display: unset;

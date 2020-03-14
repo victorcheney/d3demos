@@ -5,6 +5,10 @@ body {
   height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 ul,
 li {
   list-style: none;
@@ -34,6 +38,10 @@ li {
   /* background: #eee; */
 }
 
+.content section {
+  height: 100%;
+}
+
 .title {
   text-align: center;
   color: #b2d166;
@@ -43,13 +51,19 @@ li {
   padding: 15px;
   /* overflow-y: scroll; */
   min-height: 600px;
+  height: 100%;
 }
 
-.chart-container > div {
+.chart-container > div#chart {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #8fac4a;
+  height: 100%;
+}
+
+.chart-container > div > svg {
+  height: 100%;
 }
 
 .menu {
