@@ -25,11 +25,14 @@ let selectedCategory = null
 
 const opacityVal = 0.4
 
+let lineTextFontSize = 10
+
 let graphData
 let simulation
 
 const zoom = d3
   .zoom()
+  .scaleExtent([1 / 2, 3]) 
   .duration(100)
   .on('zoom', zoomed)
 
@@ -54,13 +57,11 @@ const link = svg
   .attr('stroke', '#aaa')
   .attr('stroke-opacity', opacityVal)
 
+const gnode = svg.append('g').attr('class', 'zoom-g')
+
 const linkText = svg.append('g')
   .attr('class', 'link-text')
   .attr('class', 'zoom-g')
-
-let linkTextEnter
-
-const gnode = svg.append('g').attr('class', 'zoom-g')
 
 // 创建图例
 const spacing = 30
@@ -80,7 +81,6 @@ const render = data => {
   let { links, nodes, categories } = data
 
   links = setRelationGroup(links)
-  console.log(links)
 
   simulation = d3
     .forceSimulation(nodes)
@@ -89,10 +89,10 @@ const render = data => {
       d3
         .forceLink(links)
         .id(d => d.id)
-        .distance(200)
+        .distance(0)
         .strength(1)
     )
-    .force('charge', d3.forceManyBody().strength(-450))
+    .force('charge', d3.forceManyBody().strength(-450).distanceMin(150))
     // .force('charge', d3.forceCollide(20))
     // .force('charge', d3.forceCenter(0, 0))
     // .force('charge', d3.forceRadial(200))
@@ -100,16 +100,14 @@ const render = data => {
     .force('y', d3.forceY())
 
   /* const linkJoin = link
-    .selectAll('path')
+    .selectAll('line')
     .data(links)
-    .join('path')
+    .join('line')
     .attr('marker-end', d => `url(#${d.target.categories[0]})`) */
 
   const linkJoin = link
     .selectAll('path')
     .data(links)
-    // .join('path')
-    // .attr('marker-end', d => `url(#${d.target.categories[0]})`)
 
   let linkEnter = linkJoin.enter().append('path')
     .attr('marker-end', d => `url(#${d.target.categories[0]})`)
@@ -125,9 +123,10 @@ const render = data => {
   linkTextG.exit().remove()
   linkTextEnter = linkTextG.enter()
     .append('text')
+    // .attr('dx', d => getLineTextDx(d))
     .attr('dx', 90)
     .attr('dy', -2)
-    .attr('font-size', 10)
+    .attr('font-size', lineTextFontSize)
     .attr('fill', '#aaa');
 
   // update
@@ -178,6 +177,15 @@ const render = data => {
   enterNode.on('mouseover', nodeMouseOver)
 
   simulation.on('tick', () => {
+    /* linkJoin
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y) */
+    /* linkEnter.attr("d", function(d) {
+      return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y
+    }) */
+
     linkEnter.attr("d", function(d) {
       //如果连接线连接的是同一个实体，则对path属性进行调整，绘制的圆弧属于长圆弧，同时对终点坐标进行微调，避免因坐标一致导致弧无法绘制
       if(d.target == d.source){
@@ -352,122 +360,20 @@ const onClickLegend = d => {
   d3.event.stopPropagation()
 }
 
-// 关系分组
-const setRelationGroup = (links) => {
-  //对连接线进行统计和分组，不区分连接线的方向，只要属于同两个实体，即认为是同一组
-  let linkMap  = {}
-  let linkGroup = {}
+function getLineTextDx(d) {
 
-  links.map(item => {
-    let key = item.source < item.target
-      ? item.source + ':' + item.target
-      : item.target + ':' + item.source
+  const sr = circleRadius[d.source.categories[0]];
+  const sx = d.source.x;
+  const sy = d.source.y;
+  const tx = d.target.x;
+  const ty = d.target.y;
 
-    if (!linkMap.hasOwnProperty(key)) {
-      linkMap[key] = 0
-    }
+  const distance = Math.sqrt(Math.pow(tx - sx, 2) + Math.pow(ty - sy, 2));
 
-    linkMap[key] +=1;
+  // const textLength = d.label.length;
+  const textLength = d.label.length;
+  const deviation = 8; // 调整误差
+  const dx = (distance - sr - textLength * lineTextFontSize) / 2 + deviation;
 
-    if (!linkGroup.hasOwnProperty(key)) {
-      linkGroup[key]=[]
-    }
-    linkGroup[key].push(item)
-
-    // 设置link type
-    item.linkType = item.source === item.target ? 'self' : 'notself'
-
-    return item
-  })
-
-  console.log('linkMap',linkMap)
-  console.log('linkGroup',linkGroup)
-  console.log('links',links)
-
-  links = setLinkNumber(links, linkMap, linkGroup)
-
-  return links
-}
-
-// 设置link编号
-const setLinkNumber = (links, linkMap, linkGroup) => {
-  links.map(item => {
-    let key = item.source < item.target
-      ? item.source + ':' + item.target
-      : item.target + ':' + item.source
-
-    item.size = linkMap[key]
-
-    // 同一组进行编号
-    let group = linkGroup[key]
-
-    dispatchNumber(group, item.linkType)
-
-    return item
-  }) 
-
-  return links
-}
-
-const dispatchNumber = (group, type) => {
-  if (group.length === 0) return
-  //对该分组内的关系按照方向进行分类，此处根据连接的实体ASCII值大小分成两部分
-  let linksA = [], linksB = []
-  group.forEach(item => {
-    if (item.source < item.target){
-      linksA.push(item)
-    } else {
-      linksB.push(item)
-    }
-  })
-
-  //确定关系最大编号。为了使得连接两个实体的关系曲线呈现对称，根据关系数量奇偶性进行平分。
-  //特殊情况：当关系都是连接到同一个实体时，不平分
-  var maxLinkNumber = 0
-  if (type ==='self') {
-    maxLinkNumber = group.length
-  } else {
-    maxLinkNumber = group.length % 2 == 0 
-      ? group.length / 2
-      : (group.length+1) / 2
-  }
-  //如果两个方向的关系数量一样多，直接分别设置编号即可
-  if (linksA.length == linksB.length) {
-    var startLinkNumber = 1;
-    for (var i = 0; i < linksA.length; i++){
-      linksA[i].linknum = startLinkNumber++;
-    }
-    startLinkNumber = 1;
-    for (var i = 0; i < linksB.length; i++) {
-      linksB[i].linknum = startLinkNumber++;
-    }
-  } else {
-    //当两个方向的关系数量不对等时，先对数量少的那组关系从最大编号值进行逆序编号，然后在对另一组数量多的关系从编号1一直编号到最大编号，再对剩余关系进行负编号
-    //如果抛开负号，可以发现，最终所有关系的编号序列一定是对称的（对称是为了保证后续绘图时曲线的弯曲程度也是对称的）
-    var biggerLinks, smallerLinks;
-    if(linksA.length > linksB.length){
-      biggerLinks = linksA;
-      smallerLinks = linksB;
-    }else{
-      biggerLinks = linksB;
-      smallerLinks = linksA;
-    }
-
-    var startLinkNumber = maxLinkNumber;
-    for (var i=0; i < smallerLinks.length; i++) {
-      smallerLinks[i].linknum = startLinkNumber--;
-    }
-    var tmpNumber = startLinkNumber;
-
-    startLinkNumber = 1;
-    var p = 0;
-    while(startLinkNumber <= maxLinkNumber){
-      biggerLinks[p++].linknum = startLinkNumber++;
-    }
-    //开始负编号
-    startLinkNumber = 0-tmpNumber;
-    for(var i=p;i<biggerLinks.length;i++){
-      biggerLinks[i].linknum = startLinkNumber++;
-    }
-  } 
+  return dx;
 }

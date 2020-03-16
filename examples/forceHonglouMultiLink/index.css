@@ -1,0 +1,13 @@
+.node {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.node:hover {
+  transform: scale(1.5);
+}
+.legend circle {
+  cursor: pointer;
+}
+.zoom-g > path {
+  fill: none;
+}

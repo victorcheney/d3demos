@@ -213,6 +213,13 @@ let menuData = [
     url: 'examples/forceMultiLine/index.html',
     originUrl: '',
     img: 'src/img/forceMultiLine.png'
+  },
+  {
+    id: '28',
+    name: '红楼梦力导向树多条关系',
+    url: 'examples/forceHonglouMultiLink/index.html',
+    originUrl: '',
+    img: 'src/img/forceMultiLine.png'
   }
 ]
 
