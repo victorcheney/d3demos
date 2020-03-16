@@ -201,11 +201,18 @@ let menuData = [
     img: 'src/img/forceDirectedTree.png'
   },
   {
-    id: '27',
+    id: '28',
     name: '红楼梦-力导向树',
     url: 'examples/forceDirectedTreeHonglou/index.html',
     originUrl: '',
     img: 'src/img/forceDirectedTreeHonglou.png'
+  },
+  {
+    id: '28',
+    name: '力导向图节点多连线',
+    url: 'examples/forceMultiLine/index.html',
+    originUrl: '',
+    img: 'src/img/forceMultiLine.png'
   }
 ]
 
