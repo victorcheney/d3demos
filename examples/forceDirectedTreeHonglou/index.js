@@ -30,6 +30,7 @@ let simulation
 
 const zoom = d3
   .zoom()
+  .scaleExtent([1 / 2, 3]) 
   .duration(100)
   .on('zoom', zoomed)
 
@@ -55,6 +56,10 @@ const link = svg
   .attr('stroke-opacity', opacityVal)
 
 const gnode = svg.append('g').attr('class', 'zoom-g')
+
+const linkText = svg.append('g')
+  .attr('class', 'link-text')
+  .attr('class', 'zoom-g')
 
 // 创建图例
 const spacing = 30
@@ -83,18 +88,57 @@ const render = data => {
         .distance(0)
         .strength(1)
     )
-    .force('charge', d3.forceManyBody().strength(-250))
+    .force('charge', d3.forceManyBody().strength(-450).distanceMin(150))
     // .force('charge', d3.forceCollide(20))
     // .force('charge', d3.forceCenter(0, 0))
     // .force('charge', d3.forceRadial(200))
     .force('x', d3.forceX())
     .force('y', d3.forceY())
 
-  const linkJoin = link
+  /* const linkJoin = link
     .selectAll('line')
     .data(links)
     .join('line')
+    .attr('marker-end', d => `url(#${d.target.categories[0]})`) */
+
+  const linkJoin = link
+    .selectAll('path')
+    .data(links)
+
+  let linkEnter = linkJoin.enter().append('path')
     .attr('marker-end', d => `url(#${d.target.categories[0]})`)
+    .attr("id", function (d) {
+      return `link${d.id}`;
+    })
+
+  // link上的文字
+  let linkTextG = linkText.selectAll('.text')
+    .data(links)
+
+  // remove exit  
+  linkTextG.exit().remove()
+  linkTextEnter = linkTextG.enter()
+    .append('text')
+    .attr('dx', d => {
+      console.log(d)
+      return 90
+    })
+    .attr('dy', -2)
+    .attr('font-size', 10)
+    .attr('fill', '#aaa');
+
+  // update
+  linkTextEnter.select('text').select('textPath')
+    .attr('xlink:href', d => `link${d.id}`)
+    .style("pointer-events", "none")
+
+  // new
+  linkTextEnter.append('textPath')
+    .attr('xlink:href', d => `#link${d.id}`)
+    .style("pointer-events", "none")
+    .text(d => d.label)
+
+  linkTextG = linkTextEnter.merge(linkTextG)
 
   const nodeGs = gnode.selectAll('g').data(nodes, d => d.id)
   const enterNode = nodeGs
@@ -131,11 +175,14 @@ const render = data => {
   enterNode.on('mouseover', nodeMouseOver)
 
   simulation.on('tick', () => {
-    linkJoin
+    /* linkJoin
       .attr('x1', d => d.source.x)
       .attr('y1', d => d.source.y)
       .attr('x2', d => d.target.x)
-      .attr('y2', d => d.target.y)
+      .attr('y2', d => d.target.y) */
+    linkEnter.attr("d", function(d) {
+          return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y
+      })
 
     enterNode.attr('transform', function(d) {
       return 'translate(' + d.x + ',' + d.y + ')'
