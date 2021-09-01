@@ -220,7 +220,14 @@ let menuData = [
     url: 'examples/forceHonglouMultiLink/index.html',
     originUrl: '',
     img: 'src/img/forceMultiLine.png'
-  }
+  },
+  {
+    id: '29',
+    name: '力导向图四',
+    url: 'examples/forcechart4/index.html',
+    originUrl: 'https://bl.ocks.org/mbostock/2675ff61ea5e063ede2b5d63c08020c7',
+    img: 'src/img/forcechart1.png'
+  },
 ]
 
 function formatMainpageMenu(menuData) {
