@@ -228,6 +228,13 @@ let menuData = [
     originUrl: 'https://bl.ocks.org/mbostock/2675ff61ea5e063ede2b5d63c08020c7',
     img: 'src/img/forcechart1.png'
   },
+  {
+    id: '30',
+    name: '圆边上最近的点',
+    url: 'examples/closestPointOnCircleEdge/index.html',
+    originUrl: 'https://observablehq.com/@zechasault/closest-point-on-circle-edge',
+    img: 'src/img/closestPointOnCircleEdge.png'
+  },
 ]
 
 function formatMainpageMenu(menuData) {
