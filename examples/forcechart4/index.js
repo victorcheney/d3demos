@@ -10,6 +10,13 @@ var svg = d3.select('#chart').append('svg')
   .attr('width', width)
   .attr('height', height);
 
+var linkG = svg.append('g')
+.attr('class', 'links')
+var link, node
+
+var nodeG = svg.append('g')
+.attr('class', 'nodes')
+
 var simulation = d3.forceSimulation()
   .force('link', d3.forceLink().id(function (d) {
     return d.id;
@@ -18,26 +25,36 @@ var simulation = d3.forceSimulation()
   .force('center', d3.forceCenter(width / 2, height / 2));
 
 // 缩放
-const zoom = d3.zoom().duration(100).on('zoom', zoomed)
+const zoom = d3.zoom().duration(500).on('zoom', zoomed)
 d3.select('#chart')
   .call(zoom)
   .on('dblclick.zoom', null)
 
+const zoomEl = d3.zoom().duration(500).on('zoom', zoomed)
+
 function zoomed () {
-    d3.selectAll('svg > g').attr('transform', d3.event.transform)
+    // d3.selectAll('svg > g').attr('transform', d3.event.transform)
+    link.attr('transform', d3.event.transform)
+    node.attr('transform', d3.event.transform)
 }
 
+const el = document.getElementById('chart')
+const w = el.clientWidth
+const h = el.clientHeight
+
+function getData () {
+  console.log('getData')
 d3.json('data.json')
   .then(function (graph) {
 
-    var link = svg.append('g')
-      .attr('class', 'links')
+    // d3.selectAll('svg > g').attr('transform', 'translate(' + (w / 2) + ',' + (h / 2) + ') scale(1)')
+
+    link = linkG
       .selectAll('line')
       .data(graph.links)
       .enter().append('line');
 
-    var node = svg.append('g')
-      .attr('class', 'nodes')
+    node = nodeG
       .selectAll('circle')
       .data(graph.nodes)
       .enter().append('circle')
@@ -54,7 +71,7 @@ d3.json('data.json')
         d3.selectAll('svg > g').transition()
            .duration(500)
            .call(zoom.transform, d3.zoomIdentity.translate(w / 2, h / 2).scale(1).translate(-d.x,-d.y))
-      })
+      })  
 
     node.append('title')
       .text(function (d) {
@@ -91,7 +108,15 @@ d3.json('data.json')
           return d.y;
         });
     }
+
+    svg.transition().duration(500).call(
+      zoom.transform,
+      d3.zoomIdentity,
+      d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
+    );
+
   });
+}
 
 function dragstarted(d) {
   if (!d3.event.active) simulation.alphaTarget(0.3).restart();
@@ -109,3 +134,14 @@ function dragended(d) {
   d.fx = null;
   d.fy = null;
 }
+
+// 参考：https://observablehq.com/@monahans/final-project-force-directed-graph-of-ingredients
+function reset () {
+  svg.transition().duration(500).call(
+    zoomEl.transform,
+    d3.zoomIdentity,
+    d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
+  );
+}
+
+getData()
