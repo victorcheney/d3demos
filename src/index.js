@@ -208,32 +208,39 @@ let menuData = [
     img: 'src/img/forceDirectedTreeHonglou.png'
   },
   {
-    id: '28',
+    id: '29',
     name: '力导向图节点多连线',
     url: 'examples/forceMultiLine/index.html',
     originUrl: '',
     img: 'src/img/forceMultiLine.png'
   },
   {
-    id: '28',
+    id: '30',
     name: '红楼梦力导向树多条关系',
     url: 'examples/forceHonglouMultiLink/index.html',
     originUrl: '',
     img: 'src/img/forceMultiLine.png'
   },
   {
-    id: '29',
+    id: '31',
     name: '力导向图四',
     url: 'examples/forcechart4/index.html',
     originUrl: 'https://bl.ocks.org/mbostock/2675ff61ea5e063ede2b5d63c08020c7',
     img: 'src/img/forcechart1.png'
   },
   {
-    id: '30',
+    id: '32',
     name: '圆边上最近的点',
     url: 'examples/closestPointOnCircleEdge/index.html',
     originUrl: 'https://observablehq.com/@zechasault/closest-point-on-circle-edge',
     img: 'src/img/closestPointOnCircleEdge.png'
+  },
+  {
+    id: '33',
+    name: '力导向图节点多连线2',
+    url: 'examples/forceMultiLine2/index.html',
+    originUrl: '',
+    img: 'src/img/forceMultiLine2.png'
   },
 ]
 
