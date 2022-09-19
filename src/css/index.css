@@ -203,6 +203,7 @@ body > section {
   height: 100%;
   margin: 0;
   overflow-y: scroll;
+  padding: 0;
 }
 
 .view-chart .list-container li {
