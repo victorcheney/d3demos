@@ -1,7 +1,7 @@
 .chart-container {
   position: relative;
   overflow-y: scroll;
-  min-height: 923px;
+  box-sizing: border-box;
 }
 
 #chart,

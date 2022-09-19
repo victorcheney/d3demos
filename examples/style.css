@@ -18,16 +18,17 @@ li {
 
 .container {
   display: flex;
-  background: #201e1e;
+  background: rgba(32, 30, 30, 0.95);
   height: 100%;
 }
 .aside {
   height: 100%;
-  width: 350px;
+  width: 0px;
   border-right: 1px solid #ddd;
   background: #fff;
   overflow-y: scroll;
   overflow-x: visible;
+  display: none;
 }
 
 .content {
@@ -52,6 +53,8 @@ li {
   /* overflow-y: scroll; */
   min-height: 600px;
   height: 100%;
+  text-align: center;
+  color: #fff;
 }
 
 .chart-container > div#chart {
@@ -59,12 +62,7 @@ li {
   justify-content: center;
   align-items: center;
   color: #8fac4a;
-  height: 100%;
-}
-
-.chart-container > div > svg {
-  height: 100%;
-  width: 100%;
+  /* height: 100%; */
 }
 
 .menu {

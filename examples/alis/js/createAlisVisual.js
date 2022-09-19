@@ -25,7 +25,7 @@ function createAlisVisual() {
       top: 0,
       right: 0,
       bottom: 0,
-      left: 0
+      left: 0,
     },
     width = 100,
     height = 100,
@@ -50,12 +50,12 @@ function createAlisVisual() {
   let it
   const ot = d3
     .stratify()
-    .id(t => t.id)
-    .parentId(t => t.parentId)
+    .id((t) => t.id)
+    .parentId((t) => t.parentId)
   let st = null,
-    dt = function(t) {},
-    ct = function() {},
-    pt = function(t) {},
+    dt = function (t) {},
+    ct = function () {},
+    pt = function (t) {},
     ut = !1,
     ht = !1,
     mt = null,
@@ -65,8 +65,8 @@ function createAlisVisual() {
   const randomUniform = d3.randomUniform(0.8, 2)
   lineRadial = d3
     .lineRadial()
-    .angle(t => t.angle + n)
-    .radius(t => t.radius)
+    .angle((t) => t.angle + n)
+    .radius((t) => t.radius)
     .curve(d3.curveBasis)
   _t = d3.scaleLinear()
   wt = d3
@@ -74,11 +74,7 @@ function createAlisVisual() {
     .domain([0, 0.15 * PI])
     .range([0, 0.02 * PI])
     .clamp(!0)
-  scaleSqrt = d3
-    .scaleSqrt()
-    .domain([0, 1, 70])
-    .range([1.5, 1.5, 20])
-    .clamp(!0)
+  scaleSqrt = d3.scaleSqrt().domain([0, 1, 70]).range([1.5, 1.5, 20]).clamp(!0)
   scaleOrdinal = d3
     .scaleOrdinal()
     .domain([
@@ -89,26 +85,14 @@ function createAlisVisual() {
       'COMPLETE',
       'RUNNING',
       'FAILURE',
-      'SUCCESS'
+      'SUCCESS',
     ])
     .range(colorRange)
     .unknown('white')
   scalePow = d3.scalePow().exponent(0.6)
-  Ct = d3
-    .scaleLinear()
-    .domain([20, 500, 1e3])
-    .range([175, 250, 300])
-    .clamp(!0)
-  St = d3
-    .scaleLinear()
-    .domain([20, 500, 1e3])
-    .range([1, 1.1, 1.1])
-    .clamp(!0)
-  Mt = d3
-    .scaleLinear()
-    .domain([50, 900])
-    .range([50, 1500])
-    .clamp(!0)
+  Ct = d3.scaleLinear().domain([20, 500, 1e3]).range([175, 250, 300]).clamp(!0)
+  St = d3.scaleLinear().domain([20, 500, 1e3]).range([1, 1.1, 1.1]).clamp(!0)
+  Mt = d3.scaleLinear().domain([50, 900]).range([50, 1500]).clamp(!0)
 
   function At(t) {
     p = t
@@ -134,26 +118,14 @@ function createAlisVisual() {
       .attr('id', 'canvas-hover')
       .style('pointer-events', 'none')
     c = d.node().getContext('2d')
-    h = t
-      .append('svg')
-      .attr('id', 'svg-hover')
-      .style('pointer-events', 'none')
+    h = t.append('svg').attr('id', 'svg-hover').style('pointer-events', 'none')
     g = h.append('g')
-    y = g
-      .append('g')
-      .attr('id', 'center-text-group')
-      .style('opacity', 0)
+    y = g.append('g').attr('id', 'center-text-group').style('opacity', 0)
     x = y.append('g').attr('id', 'title-timeframe-group')
     v = y.append('g').attr('id', 'title-services-group')
-    _ = y
-      .append('g')
-      .attr('id', 'title-domain-group')
-      .style('display', 'none')
-    w = y
-      .append('g')
-      .attr('id', 'title-node-group')
-      .style('opacity', 0)
-    ;(function() {
+    _ = y.append('g').attr('id', 'title-domain-group').style('display', 'none')
+    w = y.append('g').attr('id', 'title-node-group').style('opacity', 0)
+    ;(function () {
       x.attr('transform', 'translate(0,-85)')
       x.append('text')
         .attr('class', 'center-text center-text-small')
@@ -323,21 +295,21 @@ function createAlisVisual() {
         'collide',
         d3
           .forceCollide()
-          .radius(t => t.r + Math.max(2, Math.min(0.2 * t.r, 4)))
+          .radius((t) => t.r + Math.max(2, Math.min(0.2 * t.r, 4)))
           .strength(0.7)
       )
       .force(
         'x',
         d3
           .forceX()
-          .x(t => t.x)
+          .x((t) => t.x)
           .strength(0.1)
       )
       .force(
         'y',
         d3
           .forceY()
-          .y(t => t.y)
+          .y((t) => t.y)
           .strength(0.1)
       )
   }
@@ -353,9 +325,9 @@ function createAlisVisual() {
         .outerRadius(Y - 47)
         .cornerRadius(2),
       H.innerRadius(Y - 75).outerRadius(Y - 40),
-      (function() {
-        P.forEach(t => (t.r = scaleSqrt(t.degree))),
-          (j = d3.sum(P, t => 2 * t.r + 1)),
+      (function () {
+        P.forEach((t) => (t.r = scaleSqrt(t.degree))),
+          (j = d3.sum(P, (t) => 2 * t.r + 1)),
           (j += (V = 0.015 * j) * X)
         let t = -n,
           PI = P[0].domain
@@ -371,50 +343,50 @@ function createAlisVisual() {
             (PI = n.domain)
         })
       })(),
-      (function() {
+      (function () {
         let t = Math.min((0.01 * e) / X, 0.01 * e)
         if (((tt = []), X > 1))
           K.forEach((PI, r) => {
-            let l = P.filter(t => t.domain === PI),
-              i = d3.extent(l, t => t.angle)
+            let l = P.filter((t) => t.domain === PI),
+              i = d3.extent(l, (t) => t.angle)
             tt.push({
               domain: PI,
-              value: d3.sum(l, t => t.r + 1),
+              value: d3.sum(l, (t) => t.r + 1),
               startAngle: i[0] + n - t,
               endAngle: i[1] + n + t,
               centerAngle: (i[0] + i[1]) / 2 + n,
               centerPaddingAngle: i[0] - ((e / j) * V) / 2,
               index: r,
-              max_depth: d3.max(l, t => t.depth)
+              max_depth: d3.max(l, (t) => t.depth),
             })
           })
         else {
           let t = K[0]
           tt.push({
             domain: t,
-            value: d3.sum(P, t => t.r + 1),
+            value: d3.sum(P, (t) => t.r + 1),
             startAngle: 0,
             endAngle: e,
             centerAngle: PI,
             centerPaddingAngle: 0,
             index: 0,
-            max_depth: d3.max(P, t => t.depth)
+            max_depth: d3.max(P, (t) => t.depth),
           })
         }
       })(),
-      (function() {
+      (function () {
         it.nodes(P).stop()
         for (let t = 0; t < 50; ++t) it.tick()
-        P.forEach(t => {
+        P.forEach((t) => {
           ;(t.radius = Math.sqrt(qt(t.x) + qt(t.y))),
             (t.angle = Math.atan(t.y / t.x)),
             t.x < 0 && (t.angle += PI)
         })
       })(),
-      B.forEach(t =>
-        (function(t) {
+      B.forEach((t) =>
+        (function (t) {
           for (
-            t.pos_pure = (function(t) {
+            t.pos_pure = (function (t) {
               let n = [],
                 r = t.source.angle,
                 l = t.source.radius,
@@ -467,7 +439,7 @@ function createAlisVisual() {
                   angle: t,
                   radius: e,
                   x: e * Math.cos(t),
-                  y: e * Math.sin(t)
+                  y: e * Math.sin(t),
                 })
               }
               return y(m, g), y(i, o), n
@@ -484,13 +456,13 @@ function createAlisVisual() {
       ),
       ct(),
       ut
-        ? (function() {
+        ? (function () {
             gt && gt.stop()
             ft && clearTimeout(ft)
             yt && clearTimeout(yt)
             ;(ht = !1), ct()
             const t = d3.easeCubic
-            P.forEach(t => {
+            P.forEach((t) => {
               ;(t.tx = t.x),
                 (t.ty = t.y),
                 (t.t_angle = t.angle),
@@ -520,19 +492,13 @@ function createAlisVisual() {
                     $t()
                 }),
               st &&
-                (o
-                  .transition('fade')
-                  .duration(150)
-                  .style('opacity', 1),
-                d
-                  .transition('fade')
-                  .duration(150)
-                  .style('opacity', 0))
+                (o.transition('fade').duration(150).style('opacity', 1),
+                d.transition('fade').duration(150).style('opacity', 0))
             ft = setTimeout(() => {
-              mt = d3.timer(e => {
+              mt = d3.timer((e) => {
                 const PI = t(Math.min(1, e / 500))
                 if (
-                  (P.forEach(t => {
+                  (P.forEach((t) => {
                     null !== t.sx
                       ? ((t.x = t.sx * (1 - PI) + t.tx * PI),
                         (t.y = t.sy * (1 - PI) + t.ty * PI),
@@ -572,10 +538,10 @@ function createAlisVisual() {
   }
 
   function Lt(t, e) {
-    ;(P = (function(t) {
+    ;(P = (function (t) {
       return (
         (U = {}),
-        t.forEach(t => {
+        t.forEach((t) => {
           ;(t.percentageComplete = +t.percentageComplete),
             (t.time_updated = rt(t.updated)),
             (t.time_created = rt(t.created)),
@@ -594,7 +560,7 @@ function createAlisVisual() {
             : t.time_created < e.time_created
             ? -1
             : 0
-        )).forEach(t => {
+        )).forEach((t) => {
           let e = U[t.parentId]
           '' === t.parentId || e || (t.parentId = ''),
             '' === t.parentId && (t.parentId = t.domain)
@@ -603,28 +569,28 @@ function createAlisVisual() {
       )
     })(JSON.parse(JSON.stringify(t)))),
       (L = P.length),
-      (K = [...new Set(P.map(t => t.domain))]),
+      (K = [...new Set(P.map((t) => t.domain))]),
       (X = K.length),
       (B = (B = JSON.parse(JSON.stringify(e))).filter(
-        t => U[t.source] && U[t.target]
+        (t) => U[t.source] && U[t.target]
       )),
-      P.forEach(t => {
-        ;(t.degree = B.filter(e => e.source == t.id).length),
+      P.forEach((t) => {
+        ;(t.degree = B.filter((e) => e.source == t.id).length),
           (t.opacity = 1),
           (t.reveal_counter = 10)
       }),
-      K.forEach(t => {
+      K.forEach((t) => {
         P.push({
           id: t,
           parentId: 'alis',
-          domain: t
+          domain: t,
         })
       }),
       P.push({
         id: 'alis',
-        parentId: null
+        parentId: null,
       }),
-      ot(P).each(t => {
+      ot(P).each((t) => {
         let e = U[t.id]
         if (e) {
           ;(e.depth = t.depth),
@@ -642,21 +608,21 @@ function createAlisVisual() {
         }
       }),
       P.splice(-(K.length + 1)),
-      (O = d3.extent(P, t => t.depth)),
+      (O = d3.extent(P, (t) => t.depth)),
       (Q = O[1]),
       scalePow.domain(O)
     let PI = P.filter(
-      t =>
+      (t) =>
         'COMPLETED' === t.state ||
         'COMPLETE' === t.state ||
         'SUCCESS' === t.state
-    ).map(t => t.duration)
+    ).map((t) => t.duration)
     PI.length > 0 &&
       ((at = Math.max(3, d3.mean(PI) + 2 * d3.deviation(PI))),
       (at = Math.min(at, 30))),
       (N = {}),
       (D = {}),
-      B.forEach(t => {
+      B.forEach((t) => {
         ;(t.id = t.source + ',' + t.target),
           (D[t.id] = !0),
           N[t.source] || (N[t.source] = []),
@@ -709,7 +675,7 @@ function createAlisVisual() {
     let t = Tt(m)
     ;(t && st === t) ||
       (t
-        ? (!(function(t) {
+        ? (!(function (t) {
             d3
               .selectAll('#canvas-background, #canvas-links, #canvas-nodes')
               .interrupt('fade')
@@ -719,11 +685,11 @@ function createAlisVisual() {
             if ((dt(t), null === st || t !== st)) {
               ;(c.globalAlpha = 1),
                 Yt([c]),
-                (function(t) {
+                (function (t) {
                   const e = d3.timeFormat('%H:%M - %B %-d')
                   w.select('#node-creation').text(e(t.time_created)),
                     w.select('#node-duration').text(
-                      (function(t, e) {
+                      (function (t, e) {
                         let PI = Math.pow(10, e)
                         return (
                           (t = parseFloat((t * PI).toFixed(11))),
@@ -765,35 +731,35 @@ function createAlisVisual() {
                 _.style('display', 'none')
               let n = [
                 ...new Set(
-                  P.filter(t => t.parent_group === PI).map(t => t.domain)
-                )
+                  P.filter((t) => t.parent_group === PI).map((t) => t.domain)
+                ),
               ]
               Jt(c, n),
                 (c.shadowBlur = 0),
                 lineRadial.context(c),
                 B.filter(
-                  t =>
+                  (t) =>
                     t.source.parent_group === PI && t.target.parent_group === PI
-                ).forEach(e => {
+                ).forEach((e) => {
                   e.source.id !== t.id &&
                     e.target.id !== t.id &&
                     Ut(c, e, !0, 0.5, 1)
                 }),
                 B.filter(
-                  e => e.source.id === t.id || e.target.id === t.id
-                ).forEach(t => {
+                  (e) => e.source.id === t.id || e.target.id === t.id
+                ).forEach((t) => {
                   Ut(c, t, !0, 1, 1.75, t.color === E ? t.color : 'white')
                 }),
                 (c.globalCompositeOperation = 'source-over'),
                 (c.shadowBlur = 0),
                 (c.lineWidth = 2),
-                P.filter(t => t.parent_group === PI).forEach(t => {
+                P.filter((t) => t.parent_group === PI).forEach((t) => {
                   Wt(c, t)
                 }),
                 (c.shadowBlur = 0),
                 (c.lineWidth = 3),
                 c.setLineDash([0, 5]),
-                P.filter(t => t.parent_group === PI).forEach(t => {
+                P.filter((t) => t.parent_group === PI).forEach((t) => {
                   Ft(c, t)
                 }),
                 c.setLineDash([])
@@ -809,7 +775,7 @@ function createAlisVisual() {
           (st = t))
         : null !== st &&
           ((st = null),
-          (function() {
+          (function () {
             ct(),
               $t(),
               d3
@@ -819,20 +785,14 @@ function createAlisVisual() {
                 .transition('fade')
                 .duration(300)
                 .style('opacity', 1),
-              w
-                .transition('fade')
-                .duration(300)
-                .style('opacity', 0),
+              w.transition('fade').duration(300).style('opacity', 0),
               Z && _.style('display', null)
             d3
               .selectAll('#canvas-background, #canvas-links, #canvas-nodes')
               .transition('fade')
               .duration(300)
               .style('opacity', 1),
-              d
-                .transition('fade')
-                .duration(300)
-                .style('opacity', 0)
+              d.transition('fade').duration(300).style('opacity', 0)
           })()))
   }
 
@@ -844,9 +804,9 @@ function createAlisVisual() {
       ((t = u).lineWidth = 1.5),
       (t.strokeStyle = 'rgba(255,255,255,0.2)'),
       (t.shadowBlur = 0),
-      tt.forEach(e => {
+      tt.forEach((e) => {
         let PI = d3.range(2, e.max_depth + 1)
-        PI.forEach(PI => {
+        PI.forEach((PI) => {
           t.beginPath(),
             t.arc(0, 0, scalePow(PI), e.startAngle - n, e.endAngle - n),
             t.stroke()
@@ -859,7 +819,7 @@ function createAlisVisual() {
     Yt([l]),
       (l.lineWidth = 1),
       lineRadial.context(l),
-      B.forEach(t => {
+      B.forEach((t) => {
         Ut(l, t)
       }),
       (l.globalCompositeOperation = 'source-over')
@@ -870,13 +830,13 @@ function createAlisVisual() {
       (s.shadowBlur = 0),
       (s.shadowColor = 'black'),
       (s.lineWidth = 2),
-      P.forEach(t => {
+      P.forEach((t) => {
         Wt(s, t)
       }),
       (s.shadowBlur = 0),
       (s.lineWidth = 3),
       s.setLineDash([0, 5]),
-      P.forEach(t => {
+      P.forEach((t) => {
         Ft(s, t)
       }),
       s.setLineDash([])
@@ -895,10 +855,8 @@ function createAlisVisual() {
           (t.lineWidth = r),
           lineRadial(e.pos_pure),
           t.stroke())
-        : ((t.strokeStyle = chroma(e.color)
-            .alpha(n)
-            .css()),
-          e.paths.forEach(e => {
+        : ((t.strokeStyle = chroma(e.color).alpha(n).css()),
+          e.paths.forEach((e) => {
             t.beginPath(), lineRadial(e), t.stroke()
           }))
   }
@@ -914,26 +872,18 @@ function createAlisVisual() {
       t.arc(n, r, PI.r, 0, e),
       scaleOrdinal(PI.state) === k)
     )
-      (t.shadowColor = chroma('rgb(220,220,220)')
-        .alpha(PI.opacity)
-        .css()),
+      (t.shadowColor = chroma('rgb(220,220,220)').alpha(PI.opacity).css()),
         (t.strokeStyle = `rgba(225,225,225,${0.8 * PI.opacity})`),
-        (t.fillStyle = chroma('black')
-          .alpha(PI.opacity)
-          .css()),
+        (t.fillStyle = chroma('black').alpha(PI.opacity).css()),
         t.stroke(),
         ut || (t.shadowBlur = PI.r + 2),
         t.fill()
     else {
       let e = scaleOrdinal(PI.state),
         l = chroma(e).brighten(1),
-        o = chroma(e)
-          .alpha(PI.opacity)
-          .css()
+        o = chroma(e).alpha(PI.opacity).css()
       if (
-        ((l = chroma(l)
-          .alpha(PI.opacity)
-          .css()),
+        ((l = chroma(l).alpha(PI.opacity).css()),
         (t.fillStyle = t.strokeStyle = o),
         !ut || ht)
       ) {
@@ -959,15 +909,13 @@ function createAlisVisual() {
       t.beginPath(),
         t.moveTo(n + l, r),
         t.arc(n, r, l, 0, e),
-        (t.strokeStyle = chroma(E)
-          .alpha(PI.opacity)
-          .css()),
+        (t.strokeStyle = chroma(E).alpha(PI.opacity).css()),
         t.stroke()
     }
   }
 
   function Jt(t, r) {
-    ;(r = r || tt.map(t => t.domain)),
+    ;(r = r || tt.map((t) => t.domain)),
       (t.font = 'normal normal 400 9px ' + nt),
       (t.textAlign = 'center'),
       (t.textBaseline = 'middle'),
@@ -977,8 +925,8 @@ function createAlisVisual() {
       (t.shadowColor = 'white'),
       $.context(t),
       tt
-        .filter(t => r.indexOf(t.domain) >= 0)
-        .forEach(r => {
+        .filter((t) => r.indexOf(t.domain) >= 0)
+        .forEach((r) => {
           t.fillStyle = 'rgba(255,255,255,0.5)'
           for (let e = 0; e < 10; e++)
             (t.shadowBlur = 8 * e),
@@ -989,13 +937,9 @@ function createAlisVisual() {
           ;(t.globalAlpha = 1), (t.fillStyle = 'rgba(255,255,255,1)')
           let l = r.centerAngle < n || r.centerAngle > e - n ? 'up' : 'down',
             i = $.innerRadius()() - 15
-          !(function(t, e, n, r, l, i = 1, o = !1) {
+          !(function (t, e, n, r, l, i = 1, o = !1) {
             let s = 'up' === l ? n : n - PI
-            'up' === l &&
-              (e = e
-                .split('')
-                .reverse()
-                .join(''))
+            'up' === l && (e = e.split('').reverse().join(''))
             for (let PI = 0; PI < e.length; PI++) {
               let n = t.measureText(e[PI]).width
               s += (n + (PI === e.length - 1 ? 0 : i)) / r / 2
@@ -1022,14 +966,14 @@ function createAlisVisual() {
       .style('fill', 'none')
       .style('cursor', 'pointer')
       .style('pointer-events', 'all')
-      .attr('d', t => H(t))
-      .on('click', t => {
+      .attr('d', (t) => H(t))
+      .on('click', (t) => {
         t.domain === Z
           ? (o.on('mousemove', null), At.filterDomain('reset'))
           : tt.length > 1 &&
             (o.on('mousemove', null), At.filterDomain(t.domain))
       })
-      .on('mouseover', e => {
+      .on('mouseover', (e) => {
         !ut &&
           tt.length > 1 &&
           ((t = e.domain),
@@ -1044,21 +988,21 @@ function createAlisVisual() {
           Jt(c, t),
           (c.shadowBlur = 0),
           lineRadial.context(c),
-          B.filter(e => e.source.domain === t && e.target.domain === t).forEach(
-            t => {
-              Ut(c, t, !0, 0.5, 1)
-            }
-          ),
+          B.filter(
+            (e) => e.source.domain === t && e.target.domain === t
+          ).forEach((t) => {
+            Ut(c, t, !0, 0.5, 1)
+          }),
           (c.globalCompositeOperation = 'source-over'),
           (c.shadowBlur = 0),
           (c.lineWidth = 2),
-          P.filter(e => e.domain === t).forEach(t => {
+          P.filter((e) => e.domain === t).forEach((t) => {
             Wt(c, t)
           }),
           (c.shadowBlur = 0),
           (c.lineWidth = 3),
           c.setLineDash([0, 5]),
-          P.filter(e => e.domain === t).forEach(t => {
+          P.filter((e) => e.domain === t).forEach((t) => {
             Ft(c, t)
           }),
           c.setLineDash([]),
@@ -1074,22 +1018,22 @@ function createAlisVisual() {
   function $t(t) {
     let e
     ;(e = t
-      ? P.filter(e => e.domain === t).map(t => t.state)
-      : P.map(t => t.state)),
+      ? P.filter((e) => e.domain === t).map((t) => t.state)
+      : P.map((t) => t.state)),
       v
         .select('#node-completed')
         .text(
           e.filter(
-            t => 'COMPLETE' === t || 'COMPLETED' === t || 'SUCCESS' === t
+            (t) => 'COMPLETE' === t || 'COMPLETED' === t || 'SUCCESS' === t
           ).length
         ),
       v
         .select('#node-running')
-        .text(e.filter(t => 'PENDING' === t || 'RUNNING' === t).length),
-      v.select('#node-umuntu').text(e.filter(t => 'UMUNTU' === t).length),
+        .text(e.filter((t) => 'PENDING' === t || 'RUNNING' === t).length),
+      v.select('#node-umuntu').text(e.filter((t) => 'UMUNTU' === t).length),
       v
         .select('#node-failed')
-        .text(e.filter(t => 'FAILED' === t || 'FAILURE' === t).length)
+        .text(e.filter((t) => 'FAILED' === t || 'FAILURE' === t).length)
   }
 
   function Ht(t, e, PI) {
@@ -1103,7 +1047,7 @@ function createAlisVisual() {
   }
 
   function Yt(t) {
-    t.forEach(t => {
+    t.forEach((t) => {
       t.clearRect(-margin.left - width / 2, -margin.top - height / 2, G, z)
     })
   }
@@ -1123,7 +1067,7 @@ function createAlisVisual() {
       mt && mt.stop(),
         o.on('mousemove', null),
         f.selectAll('.domain-hover-arc').remove(),
-        t.forEach(t => {
+        t.forEach((t) => {
           let e = U[t.id]
           e
             ? ((t.sx = e.x),
@@ -1139,11 +1083,11 @@ function createAlisVisual() {
         }),
         n && ((M = t), (A = e), (T = PI), (Z = r ? Z : null)),
         (ut = !0),
-        r && Z && (t = t.filter(t => t.domain === Z)),
+        r && Z && (t = t.filter((t) => t.domain === Z)),
         Lt(t, e),
         Pt()
     }),
-    (At.filterDomain = t => {
+    (At.filterDomain = (t) => {
       f.selectAll('.domain-hover-arc').remove(),
         'reset' === t
           ? ((ut = !0), (Z = null), At.updateChart(M, A, T, !1))
@@ -1152,7 +1096,7 @@ function createAlisVisual() {
           : ((ut = !0),
             (Z = t),
             At.updateChart(
-              M.filter(e => e.domain === t),
+              M.filter((e) => e.domain === t),
               A,
               T,
               !1
@@ -1163,7 +1107,7 @@ function createAlisVisual() {
         (z = height + margin.top + margin.bottom),
         (t = Math.min(
           2,
-          (function(t) {
+          (function (t) {
             let e = window.devicePixelRatio || 1,
               PI =
                 t.webkitBackingStorePixelRatio ||
@@ -1193,19 +1137,19 @@ function createAlisVisual() {
         (s.lineWidth = 2),
         Pt()
     }),
-    (At.width = function(t) {
+    (At.width = function (t) {
       return arguments.length ? ((width = t), At) : width
     }),
-    (At.height = function(t) {
+    (At.height = function (t) {
       return arguments.length ? ((height = t), At) : height
     }),
-    (At.showTooltip = function(t) {
+    (At.showTooltip = function (t) {
       return arguments.length ? ((dt = t), At) : dt
     }),
-    (At.hideTooltip = function(t) {
+    (At.hideTooltip = function (t) {
       return arguments.length ? ((ct = t), At) : ct
     }),
-    (At.clickFunction = function(t) {
+    (At.clickFunction = function (t) {
       return arguments.length ? ((pt = t), At) : pt
     }),
     At

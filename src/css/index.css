@@ -24,16 +24,24 @@ li {
   margin: 0;
 }
 
+header {
+  border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+  background-color: rgba(51, 51, 51, 0.59);
+}
+
 header h2 {
   text-align: center;
-  height: 60px;
-  line-height: 60px;
+  height: 59px;
+  line-height: 59px;
   color: #b2d166;
 }
 
 .list-container {
   /* width: 100%; */
-  margin: 0 100px;
+  padding: 0 100px;
+  overflow-y: scroll;
+  height: 100%;
+  transition: all 0.3s;
 }
 
 .list-container ul {
@@ -41,7 +49,6 @@ header h2 {
   flex-wrap: wrap;
   align-items: center;
   padding: 10px;
-  /* justify-content: center; */
 }
 
 .list-container li {
@@ -58,6 +65,8 @@ header h2 {
   border-radius: 3px;
   border: 1px solid #333;
   overflow: hidden;
+  background: rgba(51, 51, 51, 0.5);
+  transition: all 0.3s;
 }
 
 .list-container .card-item:hover img {
@@ -114,8 +123,8 @@ header h2 {
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  background: #333;
   padding: 0 10px;
+  color: #fff;
 }
 
 .ellipsis {
@@ -131,8 +140,8 @@ header h2 {
   padding-top: 75%;
   background-repeat: no-repeat;
   background-size: 130% 120%;
-  background-position:center;
-  transition: all .3s;
+  background-position: center;
+  transition: all 0.3s;
 }
 
 .img-container:hover {
@@ -178,4 +187,63 @@ canvas {
 
 .particles-js-canvas-el {
   z-index: -1;
+}
+
+body > section {
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.view-chart {
+  display: flex;
+}
+
+.view-chart .list-container {
+  width: 280px;
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.view-chart .list-container li {
+  width: 100%;
+}
+
+.view-chart li .card-item {
+  flex-direction: row;
+  margin: 2px;
+}
+
+.view-chart li.active .card-item {
+  background: rgba(11, 11, 11, 0.4);
+}
+
+.view-chart li.active .card-item .ellipsis {
+  font-weight: 600;
+}
+
+.view-chart li .card-item .img-container {
+  width: 60px;
+  padding-top: 20%;
+}
+
+.view-chart li .card-item .title {
+  flex: 1;
+}
+
+.view-chart li .card-item .title .ellipsis {
+  display: inline-block;
+  width: 120px;
+}
+
+.iframe-wrapper {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
 }

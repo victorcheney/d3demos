@@ -2,7 +2,7 @@ const margin = {
   top: 10,
   right: 120,
   bottom: 10,
-  left: 150
+  left: 150,
 }
 
 let width = 900
@@ -15,14 +15,11 @@ let color = d3
   .interpolate(d3.interpolateHcl)
 let format = d3.format(',d')
 
-let pack = data =>
-  d3
-    .pack()
-    .size([width, height])
-    .padding(3)(
+let pack = (data) =>
+  d3.pack().size([width, height]).padding(3)(
     d3
       .hierarchy(data)
-      .sum(d => d.value)
+      .sum((d) => d.value)
       .sort((a, b) => b.value - a.value)
   )
 
@@ -51,15 +48,15 @@ function initChart(data) {
     .selectAll('circle')
     .data(root.descendants().slice(1))
     .join('circle')
-    .attr('fill', d => (d.children ? color(d.depth) : 'white'))
-    .attr('pointer-events', d => (!d.children ? 'none' : null))
-    .on('mouseover', function() {
+    .attr('fill', (d) => (d.children ? color(d.depth) : 'white'))
+    .attr('pointer-events', (d) => (!d.children ? 'none' : null))
+    .on('mouseover', function () {
       d3.select(this).attr('stroke', '#000')
     })
-    .on('mouseout', function() {
+    .on('mouseout', function () {
       d3.select(this).attr('stroke', null)
     })
-    .on('click', d => focus !== d && (zoom(d), d3.event.stopPropagation()))
+    .on('click', (d) => focus !== d && (zoom(d), d3.event.stopPropagation()))
 
   const label = svg
     .append('g')
@@ -69,9 +66,9 @@ function initChart(data) {
     .selectAll('text')
     .data(root.descendants())
     .join('text')
-    .style('fill-opacity', d => (d.parent === root ? 1 : 0))
-    .style('display', d => (d.parent === root ? 'inline' : 'none'))
-    .text(d => d.data.name)
+    .style('fill-opacity', (d) => (d.parent === root ? 1 : 0))
+    .style('display', (d) => (d.parent === root ? 'inline' : 'none'))
+    .text((d) => d.data.name)
 
   zoomTo([root.x, root.y, root.r * 2])
 
@@ -82,13 +79,13 @@ function initChart(data) {
 
     label.attr(
       'transform',
-      d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`
+      (d) => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`
     )
     node.attr(
       'transform',
-      d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`
+      (d) => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`
     )
-    node.attr('r', d => d.r * k)
+    node.attr('r', (d) => d.r * k)
   }
 
   function zoom(d) {
@@ -99,21 +96,21 @@ function initChart(data) {
     const transition = svg
       .transition()
       .duration(d3.event.altKey ? 7500 : 750)
-      .tween('zoom', d => {
+      .tween('zoom', (d) => {
         const i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2])
-        return t => zoomTo(i(t))
+        return (t) => zoomTo(i(t))
       })
 
     label
-      .filter(function(d) {
+      .filter(function (d) {
         return d.parent === focus || this.style.display === 'inline'
       })
       .transition(transition)
-      .style('fill-opacity', d => (d.parent === focus ? 1 : 0))
-      .on('start', function(d) {
+      .style('fill-opacity', (d) => (d.parent === focus ? 1 : 0))
+      .on('start', function (d) {
         if (d.parent === focus) this.style.display = 'inline'
       })
-      .on('end', function(d) {
+      .on('end', function (d) {
         if (d.parent !== focus) this.style.display = 'none'
       })
   }
@@ -121,7 +118,6 @@ function initChart(data) {
   return svg.node()
 }
 
-d3.json('flare-2.json').then(response => {
-  debugger
+d3.json('flare-2.json').then((response) => {
   initChart(response)
 })

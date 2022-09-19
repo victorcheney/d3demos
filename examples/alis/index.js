@@ -16,7 +16,7 @@ let nodes,
   time_frame,
   time_frame_format,
   font = new FontFaceObserver('Nunito', {
-    weight: 400
+    weight: 400,
   }),
   promises = []
 promises.push(font.load())
@@ -24,7 +24,7 @@ const timeFormat = d3.timeFormat('%H:%M – %b %-d')
 
 function initChart(e) {
   links = generateLinks((nodes = e))
-  nodes.forEach(e => {
+  nodes.forEach((e) => {
     e.time_created = parse_date(e.created)
     null === e.time_created && (e.time_created = parse_date_no_ms(e.created))
     e.time_updated = parse_date(e.updated)
@@ -37,7 +37,7 @@ function initChart(e) {
 
 function updateChart(e) {
   links = generateLinks((nodes = e))
-  nodes.forEach(e => {
+  nodes.forEach((e) => {
     e.time_created = parse_date(e.created)
     null === e.time_created && (e.time_created = parse_date_no_ms(e.created))
     e.time_updated = parse_date(e.updated)
@@ -75,8 +75,7 @@ socket.on('connect', function() {
     initChart(e)
   }) */
 
-d3.json('data.json').then(function(data) {
-  console.log(data)
+d3.json('data.json').then(function (data) {
   initChart(data[1])
 })
 
@@ -84,13 +83,13 @@ let current_width = window.innerWidth
 
 function generateLinks(e) {
   return e
-    .filter(function(e) {
+    .filter(function (e) {
       return null !== e.parentId
     })
-    .map(function(e) {
+    .map(function (e) {
       return {
         source: e.parentId,
-        target: e.id
+        target: e.id,
       }
     })
 }
@@ -98,23 +97,20 @@ function generateLinks(e) {
 function getTimeFrame(e) {
   var t, i
   return (
-    (t = d3.min(e, function(e) {
+    (t = d3.min(e, function (e) {
       return Math.min(e.time_created.getTime(), e.time_updated.getTime())
     })),
-    (i = d3.max(e, function(e) {
+    (i = d3.max(e, function (e) {
       return Math.max(e.time_created.getTime(), e.time_updated.getTime())
     })),
     [(t = new Date(t)), (i = new Date(i))]
   )
 }
-d3.select(window).on('resize', function() {
+d3.select(window).on('resize', function () {
   window.innerWidth !== current_width &&
     ((current_width = window.innerWidth),
     (w = document.documentElement.clientWidth),
     (h = document.documentElement.clientHeight),
-    (size = Math.min(1400, Math.max(w, h))),
-    alisVisual
-      .width(size)
-      .height(size)
-      .resize())
+    (size = Math.min(1000, Math.max(w, h))),
+    alisVisual.width(size).height(size).resize())
 })
