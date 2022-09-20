@@ -43,6 +43,10 @@ li {
   height: calc(100% - 63px);
 }
 
+.content header {
+  height: 60px;
+}
+
 .title {
   text-align: center;
   color: #b2d166;
