@@ -243,6 +243,14 @@ let menuData = [
     originUrl: '',
     img: 'src/img/forceMultiLine2.png',
   },
+  {
+    id: '34',
+    name: '3D Force-Directed Graph',
+    url: 'examples/3DForceDirectedGraph/index.html',
+    originUrl:
+      'https://github.com/vasturiano/3d-force-graph/blob/master/example/large-graph/index.html',
+    img: 'src/img/3DForceDirectedGraph.png',
+  },
 ]
 
 function formatMainpageMenu(menuData) {
