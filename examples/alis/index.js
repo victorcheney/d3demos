@@ -2,7 +2,7 @@ let container = d3.select('#chart'),
   w = document.documentElement.clientWidth,
   h = document.documentElement.clientHeight,
   // size = Math.min(1400, Math.max(w, h)),
-  size = 1000, //Math.min(1400, Math.max(w, h)),
+  size = 800, //Math.min(1400, Math.max(w, h)),
   alisVisual = createAlisVisual()
     .width(size)
     .height(size)
@@ -111,6 +111,6 @@ d3.select(window).on('resize', function () {
     ((current_width = window.innerWidth),
     (w = document.documentElement.clientWidth),
     (h = document.documentElement.clientHeight),
-    (size = Math.min(1000, Math.max(w, h))),
+    (size = Math.min(800, Math.max(w, h))),
     alisVisual.width(size).height(size).resize())
 })

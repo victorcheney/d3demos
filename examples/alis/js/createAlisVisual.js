@@ -799,7 +799,7 @@ function createAlisVisual() {
   function Rt() {
     var t
     Yt([u]),
-      (u.fillStyle = 'black'),
+      (u.fillStyle = 'transparent'),
       u.fillRect(-margin.left - width / 2, -margin.top - height / 2, G, z),
       ((t = u).lineWidth = 1.5),
       (t.strokeStyle = 'rgba(255,255,255,0.2)'),
