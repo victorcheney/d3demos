@@ -251,6 +251,13 @@ let menuData = [
       'https://github.com/vasturiano/3d-force-graph/blob/master/example/large-graph/index.html',
     img: 'src/img/3DForceDirectedGraph.png',
   },
+  {
+    id: '35',
+    name: 'Chord Dependency Diagram',
+    url: 'examples/chordDiagram/index.html',
+    originUrl: 'https://observablehq.com/@d3/chord-dependency-diagram',
+    img: 'src/img/chordDiagram.png',
+  },
 ]
 
 function formatMainpageMenu(menuData) {
