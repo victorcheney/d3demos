@@ -2,13 +2,13 @@ let margin = {
   top: 20,
   right: 30,
   bottom: 30,
-  left: 40
+  left: 40,
 }
 
 const circleRadius = {
   person: 12,
   location: 9,
-  event: 6
+  event: 6,
 }
 
 const fillColorScale = d3
@@ -30,7 +30,7 @@ let simulation
 
 const zoom = d3
   .zoom()
-  .scaleExtent([1 / 2, 3]) 
+  .scaleExtent([1 / 2, 3])
   .duration(100)
   .on('zoom', zoomed)
 
@@ -57,7 +57,8 @@ const link = svg
 
 const gnode = svg.append('g').attr('class', 'zoom-g')
 
-const linkText = svg.append('g')
+const linkText = svg
+  .append('g')
   .attr('class', 'link-text')
   .attr('class', 'zoom-g')
 
@@ -68,10 +69,12 @@ const legendG = svg
   .attr('class', 'legend')
   .attr(
     'transform',
-    `translate(-${width / 2 - margin.left}, -${height / 2 - spacing * 3})`
+    `translate(-${width / 2 - margin.left}, -${Math.abs(
+      height / 2 - spacing * 3
+    )})`
   )
 
-const render = data => {
+const render = (data) => {
   /* const root = d3.hierarchy(data)
   const links = root.links()
   const nodes = root.descendants() */
@@ -84,7 +87,7 @@ const render = data => {
       'link',
       d3
         .forceLink(links)
-        .id(d => d.id)
+        .id((d) => d.id)
         .distance(0)
         .strength(1)
     )
@@ -101,54 +104,53 @@ const render = data => {
     .join('line')
     .attr('marker-end', d => `url(#${d.target.categories[0]})`) */
 
-  const linkJoin = link
-    .selectAll('path')
-    .data(links)
+  const linkJoin = link.selectAll('path').data(links)
 
-  let linkEnter = linkJoin.enter().append('path')
-    .attr('marker-end', d => `url(#${d.target.categories[0]})`)
-    .attr("id", function (d) {
-      return `link${d.id}`;
+  let linkEnter = linkJoin
+    .enter()
+    .append('path')
+    .attr('marker-end', (d) => `url(#${d.target.categories[0]})`)
+    .attr('id', function (d) {
+      return `link${d.id}`
     })
 
   // link上的文字
-  let linkTextG = linkText.selectAll('.text')
-    .data(links)
+  let linkTextG = linkText.selectAll('.text').data(links)
 
-  // remove exit  
+  // remove exit
   linkTextG.exit().remove()
-  linkTextEnter = linkTextG.enter()
+  linkTextEnter = linkTextG
+    .enter()
     .append('text')
-    .attr('dx', d => {
-      console.log(d)
+    .attr('dx', (d) => {
       return 90
     })
     .attr('dy', -2)
     .attr('font-size', 10)
-    .attr('fill', '#aaa');
+    .attr('fill', '#aaa')
 
   // update
-  linkTextEnter.select('text').select('textPath')
-    .attr('xlink:href', d => `link${d.id}`)
-    .style("pointer-events", "none")
+  linkTextEnter
+    .select('text')
+    .select('textPath')
+    .attr('xlink:href', (d) => `link${d.id}`)
+    .style('pointer-events', 'none')
 
   // new
-  linkTextEnter.append('textPath')
-    .attr('xlink:href', d => `#link${d.id}`)
-    .style("pointer-events", "none")
-    .text(d => d.label)
+  linkTextEnter
+    .append('textPath')
+    .attr('xlink:href', (d) => `#link${d.id}`)
+    .style('pointer-events', 'none')
+    .text((d) => d.label)
 
   linkTextG = linkTextEnter.merge(linkTextG)
 
-  const nodeGs = gnode.selectAll('g').data(nodes, d => d.id)
-  const enterNode = nodeGs
-    .enter()
-    .append('g')
-    .call(drag(simulation))
+  const nodeGs = gnode.selectAll('g').data(nodes, (d) => d.id)
+  const enterNode = nodeGs.enter().append('g').call(drag(simulation))
 
   nodeGs
     .merge(enterNode)
-    .attr('opacity', d =>
+    .attr('opacity', (d) =>
       !selectedCategory || d.categories[0] === selectedCategory ? 1 : 0.2
     )
 
@@ -156,18 +158,18 @@ const render = data => {
     .append('circle')
     .attr('stroke-width', 0.5)
     .attr('class', 'node')
-    .attr('fill', d => fillColorScale(d.categories[0]))
-    .attr('stroke', d => strokeColorScale(d.categories[0]))
-    .attr('r', d => circleRadius[d.categories[0]])
+    .attr('fill', (d) => fillColorScale(d.categories[0]))
+    .attr('stroke', (d) => strokeColorScale(d.categories[0]))
+    .attr('r', (d) => circleRadius[d.categories[0]])
 
-  node.append('title').text(d => d.name)
+  node.append('title').text((d) => d.name)
   enterNode
     .append('text')
-    .attr('x', d => circleRadius[d.categories[0]] + 2)
+    .attr('x', (d) => circleRadius[d.categories[0]] + 2)
     .attr('dy', '.35em')
     .attr('fill', '#effffb')
     .attr('font-size', '10')
-    .text(function(d) {
+    .text(function (d) {
       return d.name
     })
 
@@ -180,11 +182,20 @@ const render = data => {
       .attr('y1', d => d.source.y)
       .attr('x2', d => d.target.x)
       .attr('y2', d => d.target.y) */
-    linkEnter.attr("d", function(d) {
-          return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y
-      })
+    linkEnter.attr('d', function (d) {
+      return (
+        'M ' +
+        d.source.x +
+        ' ' +
+        d.source.y +
+        ' L ' +
+        d.target.x +
+        ' ' +
+        d.target.y
+      )
+    })
 
-    enterNode.attr('transform', function(d) {
+    enterNode.attr('transform', function (d) {
       return 'translate(' + d.x + ',' + d.y + ')'
     })
   })
@@ -197,12 +208,12 @@ const render = data => {
     circleRadius,
     categories,
     onClickLegend,
-    selectedCategory
+    selectedCategory,
   })
 }
 
 // 拖拽
-const drag = simulation => {
+const drag = (simulation) => {
   function dragstarted(d) {
     if (!d3.event.active) simulation.alphaTarget(0.9).restart()
     d.fx = d.x
@@ -253,11 +264,11 @@ createArrow(svg, 'person', circleRadius['person'])
 createArrow(svg, 'event', circleRadius['event'])
 createArrow(svg, 'location', circleRadius['location'])
 
-const nodeMouseOver = e => {
+const nodeMouseOver = (e) => {
   console.log(e)
 }
 
-d3.json('./hongloudata.json').then(data => {
+d3.json('./hongloudata.json').then((data) => {
   graphData = formData(data.data, data.categories)
 
   render(graphData)
@@ -266,7 +277,7 @@ d3.json('./hongloudata.json').then(data => {
 function formData(data, categories) {
   let { nodes, edges } = data
 
-  nodes.map(item => {
+  nodes.map((item) => {
     item.name = item.label
     return item
   })
@@ -280,7 +291,7 @@ function formData(data, categories) {
   return {
     nodes: nodes,
     links: edges,
-    categories
+    categories,
   }
 }
 
@@ -293,7 +304,7 @@ const createLenged = (selection, props) => {
     circleRadius,
     categories,
     onClickLegend,
-    selectedCategory
+    selectedCategory,
   } = props
 
   const groups = selection.selectAll('g').data(fillColorScale.domain())
@@ -309,24 +320,24 @@ const createLenged = (selection, props) => {
   groupsEnter
     .append('circle')
     .merge(groups.select('circle'))
-    .attr('r', d => circleRadius[d])
+    .attr('r', (d) => circleRadius[d])
     .attr('fill', fillColorScale)
-    .attr('opacity', d =>
+    .attr('opacity', (d) =>
       !selectedCategory || d === selectedCategory ? 1 : 0.2
     )
-    .on('click', d => onClickLegend(d === selectedCategory ? null : d))
+    .on('click', (d) => onClickLegend(d === selectedCategory ? null : d))
 
   groupsEnter
     .append('text')
     .merge(groups.select('text'))
-    .text(d => categories[d])
+    .text((d) => categories[d])
     .attr('dy', '0.32em')
     .attr('x', textOffset)
     .attr('fill', '#effffb')
     .attr('font-size', 12)
 }
 
-const onClickLegend = d => {
+const onClickLegend = (d) => {
   selectedCategory = d
   render(graphData)
   simulation.stop()

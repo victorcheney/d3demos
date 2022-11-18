@@ -258,13 +258,19 @@ let menuData = [
     originUrl: 'https://observablehq.com/@d3/chord-dependency-diagram',
     img: 'src/img/chordDiagram.png',
   },
-  ,
   {
     id: '36',
     name: 'Collage Chord Diagram',
     url: 'examples/collageChordDiagram/index.html',
     originUrl: 'https://observablehq.com/@d3/chord-dependency-diagram',
     img: 'src/img/collageChordDiagram.png',
+  },
+  {
+    id: '37',
+    name: 'Author Network',
+    url: 'examples/authorNetwork/index.html',
+    originUrl: '',
+    img: 'src/img/authorNetwork.png',
   },
 ]
 
@@ -315,6 +321,9 @@ $('.list-container ul li').click(function () {
   const url = $(this).attr('data-url')
   $('#iframe').attr('src', url)
 
+  // window.open(`${location.host}?url=${url}`)
+  location.search = `?url=${url}`
+
   // 设置高亮
   $('.list-container ul li').each((index, el) => {
     $(el).attr('class', '')
@@ -333,6 +342,13 @@ $('.list-container ul li').click(function () {
 // loading
 $('#iframe').on('load', function (e) {
   $('#loading').css('display', 'none')
+})
+
+setTimeout(function () {
+  if (location.search) {
+    $('#iframe').attr('src', location.search.replace('?url=', ''))
+    $('#section').attr('class', 'view-chart')
+  }
 })
 
 // $('.aside').html(formatItempageMenu(menuData))
