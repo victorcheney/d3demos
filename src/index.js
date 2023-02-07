@@ -277,7 +277,7 @@ let menuData = [
     name: 'ChinaMap',
     url: 'examples/chinamap/index.html',
     originUrl: '',
-    img: 'src/img/d.png',
+    img: 'src/img/chinamap.png',
   },
 ]
 
