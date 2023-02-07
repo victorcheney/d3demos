@@ -272,6 +272,13 @@ let menuData = [
     originUrl: '',
     img: 'src/img/authorNetwork.png',
   },
+  {
+    id: '38',
+    name: 'ChinaMap',
+    url: 'examples/chinamap/index.html',
+    originUrl: '',
+    img: 'src/img/d.png',
+  },
 ]
 
 function formatMainpageMenu(menuData) {
