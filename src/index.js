@@ -279,6 +279,13 @@ let menuData = [
     originUrl: '',
     img: 'src/img/chinamap.png',
   },
+  {
+    id: '38',
+    name: 'ChinaMap',
+    url: 'examples/3d-bubble-gradient/index.html',
+    originUrl: '',
+    img: 'src/img/3d-bubble-gradient.png',
+  },
 ]
 
 function formatMainpageMenu(menuData) {

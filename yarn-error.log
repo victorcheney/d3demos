@@ -1,0 +1,42 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add live-server -g
+
+PATH: 
+  C:\Program Files (x86)\Python37-32\Scripts\;C:\Program Files\Java\jdk1.8.0_65\bin;C:\Program Files\Java\jdk1.8.0_65\jre\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jdk-11.0.13.8-hotspot\bin;C:\Program Files (x86)\Python37-32\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;D:\Program Files\Microsoft VS Code\bin;D:\Program Files\Git\cmd;C:\nvm;C:\Program Files\nodejs;D:\Program Files\JetBrains\IntelliJ IDEA 2019.1.3\plugins\maven\lib\maven3\bin;D:\Program Files\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin;D:\software\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin;C:\Users\CFT12534\AppData\Roaming\Python\Python37\Scripts;C:\Program Files (x86)\Yarn\bin\;D:\software\neo4j-chs-community-3.5.8-windows\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\software\apache-maven-3.8.3\bin;C:\Program Files\nodejs\node_modules\mddir;C:\Users\CFT12534\AppData\Local\Microsoft\WindowsApps;D:\Program Files\JetBrains\IntelliJ IDEA 2019.1.3\bin;C:\Users\CFT12534\AppData\Roaming\npm;C:\Users\CFT12534\AppData\Local\BypassRuntm;C:\nvm;C:\Program Files\nodejs;C:\Users\CFT12534\AppData\Local\Yarn\bin;C:\Users\CFT12534\AppData\Local\Microsoft\WindowsApps;
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  16.18.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 116.211.154.233:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+
+npm manifest: 
+  {
+    "name": "d3demos",
+    "version": "1.0.0",
+    "description": "d3 demos",
+    "main": "index.js",
+    "directories": {
+      "example": "examples",
+      "lib": "lib"
+    },
+    "scripts": {
+      "start": "live-server --port=8848",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
