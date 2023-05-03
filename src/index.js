@@ -286,6 +286,13 @@ let menuData = [
     originUrl: '',
     img: 'src/img/3d-bubble-gradient.png',
   },
+  {
+    id: '39',
+    name: 'Author Network',
+    url: 'examples/authorOrgKeyword/index.html',
+    originUrl: '',
+    img: 'src/img/authorOrgKeyword.png',
+  },
 ]
 
 function formatMainpageMenu(menuData) {
