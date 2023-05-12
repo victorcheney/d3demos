@@ -36,12 +36,12 @@ function zoomed() {
 
 const chart = document.getElementById('chart')
 const width = chart.clientWidth
-const height = chart.clientHeight
+const height = chart.clientHeight || 700
 
 const svg = d3
   .select('#chart')
   .append('svg')
-  .attr('widht', width)
+  .attr('width', width)
   .attr('height', height)
 svg.attr('viewBox', [-width / 2, -height / 2, width, height]).call(zoom)
 
@@ -67,7 +67,7 @@ const legendG = svg
   .attr('class', 'legend')
   .attr(
     'transform',
-    `translate(-${width / 2 - margin.left}, -${height / 2 - spacing * 3})`
+    `translate(${-width / 2 + margin.left}, ${-height / 2 + spacing * 3})`
   )
 
 const render = (data) => {
@@ -132,16 +132,16 @@ const render = (data) => {
   linkTextEnter
     .select('text')
     .select('textPath')
-    .attr('xlink:href', (d) => `link${d.id}`)
+    .attr('href', (d) => `link${d.id}`)
     .style('pointer-events', 'none')
 
   // new
   linkTextEnter
     .append('textPath')
-    .attr('xlink:href', (d) => `#link${d.id}`)
+    .attr('href', (d) => `#link${d.id}`)
     .style('pointer-events', 'none')
-    .attr("style", "text-anchor: middle")
-    .append("tspan")
+    .attr('style', 'text-anchor: middle')
+    .append('tspan')
     .text((d) => d.label)
 
   linkTextG = linkTextEnter.merge(linkTextG)
@@ -179,13 +179,12 @@ const render = (data) => {
 
   simulation.on('tick', () => {
     linkEnter.attr('d', function (d) {
-
       let c1 = closestPointOnCircleEdge(d.source, d.target, 12)
       let c2 = closestPointOnCircleEdge(d.target, d.source, 12)
 
       //如果连接线连接的是同一个实体，则对path属性进行调整，绘制的圆弧属于长圆弧，同时对终点坐标进行微调，避免因坐标一致导致弧无法绘制
       if (d.target == d.source) {
-        dr = 30 / d.linknum
+        dr = 30 / d.linkNum
         return (
           'M' +
           c1.x +
@@ -200,7 +199,7 @@ const render = (data) => {
           ',' +
           (c2.y + 1)
         )
-      } else if (d.size % 2 !== 0 && d.linknum === 1) {
+      } else if (d.size % 2 !== 0 && d.linkNum === 1) {
         //如果两个节点之间的连接线数量为奇数条，则设置编号为1的连接线为直线，其他连接线会均分在两边
         return 'M ' + c1.x + ' ' + c1.y + ' L ' + c2.x + ' ' + c2.y
       }
@@ -212,12 +211,12 @@ const render = (data) => {
       var dx = c1.x - c2.x,
         dy = c1.y - c2.y,
         dr =
-          (Math.sqrt(dx * dx + dy * dy) * (d.linknum + homogeneous)) /
+          (Math.sqrt(dx * dx + dy * dy) * (d.linkNum + homogeneous)) /
           (curve * homogeneous)
       //当节点编号为负数时，对弧形进行反向凹凸，达到对称效果
-      if (d.linknum < 0) {
+      if (d.linkNum < 0) {
         dr =
-          (Math.sqrt(dx * dx + dy * dy) * (-1 * d.linknum + homogeneous)) /
+          (Math.sqrt(dx * dx + dy * dy) * (-1 * d.linkNum + homogeneous)) /
           (curve * homogeneous)
         return (
           'M' +
@@ -256,7 +255,7 @@ const render = (data) => {
   })
 
   // 创建图例
-  legendG.call(createLenged, {
+  legendG.call(createLegend, {
     fillColorScale,
     textOffset: 20,
     spacing,
@@ -280,7 +279,7 @@ const drag = (simulation) => {
     d.fy = d3.event.y
   }
 
-  function dragended(d) {
+  function createLegend(d) {
     if (!d3.event.active) simulation.alphaTarget(0)
     d.fx = null
     d.fy = null
@@ -290,7 +289,7 @@ const drag = (simulation) => {
     .drag()
     .on('start', dragstarted)
     .on('drag', dragged)
-    .on('end', dragended)
+    .on('end', createLegend)
 }
 
 // 创建箭头
@@ -351,7 +350,7 @@ function formData(data, categories) {
 }
 
 // 创建图例
-const createLenged = (selection, props) => {
+const createLegend = (selection, props) => {
   const {
     fillColorScale,
     textOffset,
@@ -480,11 +479,11 @@ const dispatchNumber = (group, type) => {
   if (linksA.length == linksB.length) {
     var startLinkNumber = 1
     for (var i = 0; i < linksA.length; i++) {
-      linksA[i].linknum = startLinkNumber++
+      linksA[i].linkNum = startLinkNumber++
     }
     startLinkNumber = 1
     for (var i = 0; i < linksB.length; i++) {
-      linksB[i].linknum = startLinkNumber++
+      linksB[i].linkNum = startLinkNumber++
     }
   } else {
     //当两个方向的关系数量不对等时，先对数量少的那组关系从最大编号值进行逆序编号，然后在对另一组数量多的关系从编号1一直编号到最大编号，再对剩余关系进行负编号
@@ -500,19 +499,19 @@ const dispatchNumber = (group, type) => {
 
     var startLinkNumber = maxLinkNumber
     for (var i = 0; i < smallerLinks.length; i++) {
-      smallerLinks[i].linknum = startLinkNumber--
+      smallerLinks[i].linkNum = startLinkNumber--
     }
     var tmpNumber = startLinkNumber
 
     startLinkNumber = 1
     var p = 0
     while (startLinkNumber <= maxLinkNumber) {
-      biggerLinks[p++].linknum = startLinkNumber++
+      biggerLinks[p++].linkNum = startLinkNumber++
     }
     //开始负编号
     startLinkNumber = 0 - tmpNumber
     for (var i = p; i < biggerLinks.length; i++) {
-      biggerLinks[i].linknum = startLinkNumber++
+      biggerLinks[i].linkNum = startLinkNumber++
     }
   }
 }

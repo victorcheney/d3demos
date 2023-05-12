@@ -98,11 +98,11 @@ const dispatchNumber = (group, type) => {
   if (linksA.length == linksB.length) {
     var startLinkNumber = 1;
     for (var i = 0; i < linksA.length; i++){
-      linksA[i].linknum = startLinkNumber++;
+      linksA[i].linkNum = startLinkNumber++;
     }
     startLinkNumber = 1;
     for (var i = 0; i < linksB.length; i++) {
-      linksB[i].linknum = startLinkNumber++;
+      linksB[i].linkNum = startLinkNumber++;
     }
   } else {
     //当两个方向的关系数量不对等时，先对数量少的那组关系从最大编号值进行逆序编号，然后在对另一组数量多的关系从编号1一直编号到最大编号，再对剩余关系进行负编号
@@ -118,19 +118,19 @@ const dispatchNumber = (group, type) => {
 
     var startLinkNumber = maxLinkNumber;
     for (var i=0; i < smallerLinks.length; i++) {
-      smallerLinks[i].linknum = startLinkNumber--;
+      smallerLinks[i].linkNum = startLinkNumber--;
     }
     var tmpNumber = startLinkNumber;
 
     startLinkNumber = 1;
     var p = 0;
     while(startLinkNumber <= maxLinkNumber){
-      biggerLinks[p++].linknum = startLinkNumber++;
+      biggerLinks[p++].linkNum = startLinkNumber++;
     }
     //开始负编号
     startLinkNumber = 0-tmpNumber;
     for(var i=p;i<biggerLinks.length;i++){
-      biggerLinks[i].linknum = startLinkNumber++;
+      biggerLinks[i].linkNum = startLinkNumber++;
     }
   } 
 }
